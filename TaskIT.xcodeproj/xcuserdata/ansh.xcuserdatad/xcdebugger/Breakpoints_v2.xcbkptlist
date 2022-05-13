@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2837D132-1A18-4BFA-AF9E-DA323A4A1194"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB3FC1FB-0E11-4252-85AA-993476AD30BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskIT/Screens/Signup/SignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "signUpBtnClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F4F6687E-0DAE-4323-82EC-253F6EED0D3C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "textViewDidBeginEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0CE1DFF-4D27-4EBE-A8F8-685E88666920"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "CreateTaskViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "B0CE1DFF-4D27-4EBE-A8F8-685E88666920 - 952b7f24d976aaf5"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaskIT.CreateTaskViewController.taskDescField.getter : Swift.Optional&lt;__C.UITextView&gt;"
+                  moduleName = "TaskIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ansh/Documents/iOS-Projects/Asst3/TaskIT/TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "85">
+               </Location>
+               <Location
+                  uuid = "B0CE1DFF-4D27-4EBE-A8F8-685E88666920 - 698d2b3744c092c9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaskIT.CreateTaskViewController.taskDescField.setter : Swift.Optional&lt;__C.UITextView&gt;"
+                  moduleName = "TaskIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ansh/Documents/iOS-Projects/Asst3/TaskIT/TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "B0CE1DFF-4D27-4EBE-A8F8-685E88666920 - 66b522cacca8caae"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaskIT.CreateTaskViewController.taskDescField.modify : Swift.Optional&lt;__C.UITextView&gt;"
+                  moduleName = "TaskIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ansh/Documents/iOS-Projects/Asst3/TaskIT/TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "B0CE1DFF-4D27-4EBE-A8F8-685E88666920 - ef0d74f86e6eaa6d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaskIT.CreateTaskViewController.taskDescField.modify : Swift.Optional&lt;__C.UITextView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "TaskIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ansh/Documents/iOS-Projects/Asst3/TaskIT/TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "B0CE1DFF-4D27-4EBE-A8F8-685E88666920 - 3044ca34925b5a13"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaskIT.CreateTaskViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; TaskIT.CreateTaskViewController"
+                  moduleName = "TaskIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ansh/Documents/iOS-Projects/Asst3/TaskIT/TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "174">
+               </Location>
+               <Location
+                  uuid = "B0CE1DFF-4D27-4EBE-A8F8-685E88666920 - ce0e2ac3f8af7b68"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaskIT.CreateTaskViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;TaskIT.CreateTaskViewController&gt;"
+                  moduleName = "TaskIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ansh/Documents/iOS-Projects/Asst3/TaskIT/TaskIT/Screens/CreateTask/CreateTaskViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "131">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E3AD43C-2253-40ED-95BC-403D53D0B45F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskIT/Screens/CreateTask/ChecklistTaskViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "textViewDidEndEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06EA2B9F-D94D-4635-93D2-6CE0CEC032B0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskIT/Screens/CreateTask/ChecklistTaskViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "textViewDidEndEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
