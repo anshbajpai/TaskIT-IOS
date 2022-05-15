@@ -13,11 +13,25 @@ class HomeViewController: UIViewController {
 
     
     
-
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let tasks: [String] = [
+        "Title 1 Here",
+        "Title 2 Here",
+        "Title 3 Here",
+        "Title 4 Here",
+        "Title 5 Here",
+        "Title 6 Here",
+        "Title 7 Here",
+        "Title 8 Here"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         let floatingButton = UIButton()
         floatingButton.setTitle("+", for: .normal)
@@ -64,4 +78,32 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+
+
+extension HomeViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tasks.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChecklistTaskCollectionViewCell", for: indexPath) as! ChecklistTaskCollectionViewCell
+        
+        cell.populate(taskTitle: tasks[indexPath.row])
+        
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 0.6
+        cell.layer.borderColor = UIColor.systemGray4.cgColor
+        
+        return cell
+    }
+}
+
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (collectionView.frame.size.width - 10)/2
+        return CGSize(width: size, height: size)
+    }
 }
