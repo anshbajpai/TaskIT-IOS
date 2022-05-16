@@ -13,6 +13,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
+    var allTasksFetchedResultsController: NSFetchedResultsController<TaskUnit>?
+
+
     
     override init() {
         persistentContainer = NSPersistentContainer(name: "TaskIT-Model")
@@ -46,6 +49,15 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return taskItem
      }
     
+    func addChecklist(checklistDesc: String, isChecklist: Bool) -> ChecklistUnit {
+        let checklistItem = NSEntityDescription.insertNewObject(forEntityName: "ChecklistUnit", into: persistentContainer.viewContext) as! ChecklistUnit
+        
+        checklistItem.checklistDescription = checklistDesc
+        checklistItem.isChecklist = isChecklist
+        
+        return checklistItem
+    }
+    
     func addChecklistToTeam(checklistItem: ChecklistUnit, taskItem: TaskUnit) {
         taskItem.addToChecklistItems(checklistItem)
     }
@@ -59,17 +71,32 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     }
     
     func fetchAllTasks() -> [TaskUnit] {
-        var tasks = [TaskUnit]()
-        
-        let request: NSFetchRequest<TaskUnit> = TaskUnit.fetchRequest()
-        
-        do {
-            try tasks = persistentContainer.viewContext.fetch(request)
-        } catch {
-            print("Fetch Request failed with error: \(error)")
+
+        if allTasksFetchedResultsController == nil {
+            let request: NSFetchRequest<TaskUnit> = TaskUnit.fetchRequest()
+            let nameSortDescriptor = NSSortDescriptor(key: "taskTitle", ascending: true)
+            request.sortDescriptors = [nameSortDescriptor]
+            
+            // Initialise Fetched Results Controller
+            allTasksFetchedResultsController =
+             NSFetchedResultsController<TaskUnit>(fetchRequest: request,
+             managedObjectContext: persistentContainer.viewContext,
+             sectionNameKeyPath: nil, cacheName: nil)
+            // Set this class to be the results delegate
+            allTasksFetchedResultsController?.delegate = self
+            
+            do {
+             try allTasksFetchedResultsController?.performFetch()
+            } catch {
+             print("Fetch Request Failed: \(error)")
+            }
         }
-        
+
+        if let tasks = allTasksFetchedResultsController?.fetchedObjects {
         return tasks
+        }
+        return [TaskUnit]()
+
     }
     
     func addListener(listener: DatabaseListener) {
@@ -83,6 +110,22 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     func removeListener(listener: DatabaseListener) {
         listeners.removeDelegate(listener)
     }
+    
+    
+    func controllerDidChangeContent(_ controller:
+      NSFetchedResultsController<NSFetchRequestResult>) {
+      if controller == allTasksFetchedResultsController {
+      listeners.invoke() { listener in
+      if (listener.listenerType == .all) {
+          listener.onAllTasksChange(change: .update,allTaskNote: fetchAllTasks())
+      }
+      }
+      }
+
+      
+      
+     }
+
     
     
 }

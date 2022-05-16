@@ -15,6 +15,8 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
     @IBOutlet weak var taskTitleField: UITextView!
     
     @IBOutlet weak var checklistTableView: UITableView!
+    
+    weak var databaseController: DatabaseProtocol?
 
     var allTasks: [String] = [
       "Buy milk from coles - 1L",
@@ -24,6 +26,8 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
         checklistDescField.delegate = self
         taskTitleField.delegate = self
         // Do any additinal setup after loading the view.
@@ -35,6 +39,28 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
             checklistDescField.text = ""
             checklistTableView.reloadData()
         }
+    }
+    
+    
+    @IBAction func testBtnClicked(_ sender: Any) {
+        
+        
+
+        // TODO: Implement some valid checks here
+        var allChecklistItems: Set<ChecklistUnit> = []
+        
+        for task in allTasks {
+            guard let newChecklistItem = databaseController?.addChecklist(checklistDesc: task, isChecklist: false) else { return }
+            allChecklistItems.insert(newChecklistItem)
+        }
+        
+        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
+        
+        self.dismiss(animated: true)
+//        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
+        
+        
+        
     }
     
     

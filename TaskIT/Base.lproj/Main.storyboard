@@ -465,7 +465,7 @@
             </objects>
             <point key="canvasLocation" x="4749.275362318841" y="83.705357142857139"/>
         </scene>
-        <!--Checklist-->
+        <!--ChecklistCreate-->
         <scene sceneID="yBI-GG-Nwx">
             <objects>
                 <viewController id="bBz-4G-Oo6" customClass="ChecklistTaskViewController" customModule="TaskIT" customModuleProvider="target" sceneMemberID="viewController">
@@ -563,7 +563,13 @@
                             <constraint firstItem="2Yr-nC-5xN" firstAttribute="leading" secondItem="jCR-u4-8Be" secondAttribute="trailing" constant="8" id="xNr-xA-YEA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Checklist" image="checklist" catalog="system" id="0Ho-O9-G7u"/>
+                    <navigationItem key="navigationItem" title="ChecklistCreate" id="fmQ-KF-Os9">
+                        <barButtonItem key="rightBarButtonItem" title="Test2" id="ehy-fF-L86">
+                            <connections>
+                                <action selector="testBtnClicked:" destination="bBz-4G-Oo6" id="8g2-gz-dPH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="checklistDescField" destination="jCR-u4-8Be" id="Hli-LC-TdA"/>
                         <outlet property="checklistTableView" destination="tdo-BY-wh8" id="4cU-zv-QBg"/>
@@ -572,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R5A-Em-7G2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5779.7101449275369" y="207.58928571428569"/>
+            <point key="canvasLocation" x="6689.8550724637689" y="207.58928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XDa-9q-Xdf">
@@ -675,7 +681,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="182" height="184"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNI-Ce-D0g">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNI-Ce-D0g">
                                                     <rect key="frame" x="9" y="21" width="142" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <nil key="textColor"/>
@@ -692,7 +698,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="43.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGt-CA-qT0">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGt-CA-qT0">
                                                                         <rect key="frame" x="41" y="13" width="138" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -776,7 +782,7 @@
             </objects>
             <point key="canvasLocation" x="3866.666666666667" y="906.69642857142856"/>
         </scene>
-        <!--Create Task-->
+        <!--Create New Task-->
         <scene sceneID="1bX-v0-7ZM">
             <objects>
                 <viewController id="3Xe-7D-BuZ" customClass="CreateTaskViewController" customModule="TaskIT" customModuleProvider="target" sceneMemberID="viewController">
@@ -819,8 +825,13 @@
                             <constraint firstItem="TNq-yr-Q8j" firstAttribute="bottom" secondItem="W3Z-K5-VAv" secondAttribute="bottom" constant="51" id="Y0O-Z6-fR5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Task" image="square.and.pencil" catalog="system" id="gM7-nd-7pT"/>
-                    <navigationItem key="navigationItem" title="Create Task" id="MEa-p4-rT4"/>
+                    <navigationItem key="navigationItem" title="Create New Task" id="MEa-p4-rT4">
+                        <barButtonItem key="rightBarButtonItem" title="Test" id="ijH-IG-zyN">
+                            <connections>
+                                <action selector="testBtnClicked:" destination="3Xe-7D-BuZ" id="9RW-Fu-omR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="taskDescField" destination="Cis-Gt-4dW" id="bC1-wL-y2b"/>
@@ -829,7 +840,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OwC-hd-NBI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5734.7826086956529" y="906.69642857142856"/>
+            <point key="canvasLocation" x="6644.9275362318849" y="906.69642857142856"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="2kr-eN-3pd">
@@ -858,6 +869,9 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Done" id="lBG-Nn-ZG3">
                                 <color key="tintColor" red="0.20784313730000001" green="0.42352941179999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="doneBtnClicked:" destination="u25-sy-7Ox" id="PRz-tt-Eob"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="Time" id="hbg-kg-Ngz"/>
                         </rightBarButtonItems>
@@ -868,14 +882,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="3Xe-7D-BuZ" kind="relationship" relationship="viewControllers" id="os5-Q5-0SQ"/>
+                        <segue destination="HON-Sv-Sfu" kind="relationship" relationship="viewControllers" id="os5-Q5-0SQ"/>
                         <segue destination="GYn-s0-OND" kind="relationship" relationship="viewControllers" id="hFH-Ex-t3f"/>
                         <segue destination="n6M-cd-fvJ" kind="relationship" relationship="viewControllers" id="Fn6-Lb-uyR"/>
-                        <segue destination="bBz-4G-Oo6" kind="relationship" relationship="viewControllers" id="wNe-5v-ffl"/>
+                        <segue destination="Y70-f6-DRA" kind="relationship" relationship="viewControllers" id="wNe-5v-ffl"/>
                         <segue destination="dE3-wj-X5W" kind="relationship" relationship="viewControllers" id="KBe-iL-kWa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUk-Kx-kZl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="u25-sy-7Ox" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4824.6376811594209" y="906.69642857142856"/>
         </scene>
@@ -955,6 +970,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdK-3h-LKj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5965" y="1655"/>
+        </scene>
+        <!--Task-->
+        <scene sceneID="lpz-jx-LSa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HON-Sv-Sfu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Task" image="square.and.pencil" catalog="system" id="gM7-nd-7pT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rnW-di-Z2y">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3Xe-7D-BuZ" kind="relationship" relationship="rootViewController" id="cpz-H2-s2n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OCY-SS-Nbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5734.7826086956529" y="906.69642857142856"/>
+        </scene>
+        <!--Checklist-->
+        <scene sceneID="EyH-L9-gaJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y70-f6-DRA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Checklist" image="checklist" catalog="system" id="0Ho-O9-G7u"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ub-na-8cn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bBz-4G-Oo6" kind="relationship" relationship="rootViewController" id="DBv-7j-TrW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QJq-8p-0Dy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5779.7101449275369" y="207.58928571428569"/>
         </scene>
     </scenes>
     <resources>

@@ -20,26 +20,29 @@ class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,
     
     @IBOutlet weak var priorityLabel: UIView!
     @IBOutlet weak var tableView: UITableView!
+    var allChecklistItems: Array<ChecklistUnit> = []
     
-    
-    func populate(taskTitle: String){
+    func populate(taskTitle: String, checklistItems: Set<ChecklistUnit>){
         taskTitleField.text = taskTitle
         
         priorityLabel.layer.cornerRadius = priorityLabel.layer.bounds.width / 2
         priorityLabel.clipsToBounds = true
+        
+        allChecklistItems = Array(checklistItems)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return allChecklistItems.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Configure your cell here
+        let currentTaskChecklist = allChecklistItems[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "checkboxHomeCell", for: indexPath) as! ChecklistHomeTableViewCell
     
         cell.delegate = self
-        let task = "Something"
-        cell.set(description: task, checked: false)
+        let task = currentTaskChecklist.checklistDescription
+        cell.set(description: task!, checked: false)
         return cell
     }
     

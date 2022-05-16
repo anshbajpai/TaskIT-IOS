@@ -17,7 +17,10 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func doneBtnClicked(_ sender: Any) {
+        CreateTaskViewController().barButtonItemClicked()
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let index = viewControllers?.index(of: viewController) else {
             return false
@@ -42,6 +45,17 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
             return false
         }
         return true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     /*
     // MARK: - Navigation

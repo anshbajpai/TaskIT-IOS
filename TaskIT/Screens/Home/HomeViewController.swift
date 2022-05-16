@@ -9,11 +9,22 @@ import UIKit
 import Hover
 import Floaty
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, DatabaseListener {
+    
+    
+    
+
+    
 
     
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var allTasks: [TaskUnit] = []
+    var listenerType: ListenerType = .all
+    weak var databaseController: DatabaseProtocol?
+
+
     
     let tasks: [TaskTest] = [
         TaskTest(taskTitle: "Title 1 Here"),
@@ -27,6 +38,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+        
+
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -62,6 +77,29 @@ class HomeViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+     super.viewWillAppear(animated)
+     databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+     super.viewWillDisappear(animated)
+     databaseController?.removeListener(listener: self)
+    }
+
+    
+    
+    func onTaskChange(change: DatabaseChange, taskNote: TaskUnit) {
+        //
+        print("Triggered Single")
+    }
+    
+    func onAllTasksChange(change: DatabaseChange, allTaskNote: [TaskUnit]) {
+        print("Triggered")
+        allTasks = allTaskNote
+        collectionView.reloadData()
+    }
+    
     @objc func pressed() {
         self.performSegue(withIdentifier: "createTaskSegue", sender: nil)
     }
@@ -82,17 +120,17 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tasks.count
+        return allTasks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let thisTask = tasks[indexPath.row]
+        let thisTask = allTasks[indexPath.row]
         
-        if thisTask.isChecked {
+        if thisTask.isChecklist {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChecklistTaskCollectionViewCell", for: indexPath) as! ChecklistTaskCollectionViewCell
             
-            cell.populate(taskTitle: thisTask.taskTitle)
+            cell.populate(taskTitle: thisTask.taskTitle!, checklistItems: thisTask.checklistItems as! Set<ChecklistUnit>)
             
             cell.layer.cornerRadius = 10
             cell.layer.borderWidth = 0.6
@@ -103,7 +141,7 @@ extension HomeViewController: UICollectionViewDataSource {
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskCollectionViewCell", for: indexPath) as! TaskCollectionViewCell
             
-            cell.populate(taskTitle: thisTask.taskTitle, taskDescription: thisTask.taskDescription)
+            cell.populate(taskTitle: thisTask.taskTitle!, taskDescription: thisTask.taskDescription!)
             
             cell.layer.cornerRadius = 10
             cell.layer.borderWidth = 0.6

@@ -12,8 +12,13 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate{
     @IBOutlet weak var taskTitleField: UITextView!
     
     @IBOutlet weak var taskDescField: UITextView!
+    
+    weak var databaseController: DatabaseProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
 
         taskTitleField.delegate = self
         taskDescField.delegate = self
@@ -21,6 +26,33 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate{
         let format = date.getFormattedDate(format: "MMM d, yyyy")
         self.tabBarController?.navigationItem.title = format
         // Do any additional setup after loading the view.
+        
+       
+    }
+    
+    
+    
+    @IBAction func testBtnClicked(_ sender: Any) {
+        print(taskTitleField.text)
+        let myTask = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: NSSet())
+        print(myTask)
+        // TODO: Jump Back to main view controller
+        self.dismiss(animated: true)
+        print("Completed !")
+    }
+    
+    
+    
+    func barButtonItemClicked() {
+       // TODO: Add Checks for field, to verify they are not empty
+//        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//        databaseController = appDelegate?.databaseController
+//        print(taskTitleField.text)
+//        let myTask = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: NSSet())
+//        print(myTask)
+//        // TODO: Jump Back to main view controller
+//        self.dismiss(animated: true)
+//        print("Completed !")
     }
     
     

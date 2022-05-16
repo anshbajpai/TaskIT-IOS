@@ -33,6 +33,8 @@ protocol DatabaseProtocol: AnyObject {
 
  func addTask(taskTitle: String, taskDescription: String, isChecklist: Bool, checklistItems: NSSet) -> TaskUnit
  func deleteTask(taskNote: TaskUnit)
+    
+func addChecklist(checklistDesc: String, isChecklist: Bool) -> ChecklistUnit 
  
 func addChecklistToTeam(checklistItem: ChecklistUnit, taskItem: TaskUnit)
     
