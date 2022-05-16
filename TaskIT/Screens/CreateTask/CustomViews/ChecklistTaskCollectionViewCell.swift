@@ -7,7 +7,13 @@
 
 import UIKit
 
-class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableViewDataSource {
+class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableViewDataSource, ChecklistHomeTableViewCellDelegate {
+    
+    
+    func checkListTableViewCell(_ cell: ChecklistHomeTableViewCell, didChangeCheckedState checked: Bool) {
+        //
+    }
+    
     
     
     @IBOutlet weak var taskTitleField: UILabel!
@@ -29,10 +35,11 @@ class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Configure your cell here
-        let cell =  UITableViewCell()
-        
-        cell.textLabel?.text = "Test"
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "checkboxHomeCell", for: indexPath) as! ChecklistHomeTableViewCell
+    
+        cell.delegate = self
+        let task = "Something"
+        cell.set(description: task, checked: false)
         return cell
     }
     

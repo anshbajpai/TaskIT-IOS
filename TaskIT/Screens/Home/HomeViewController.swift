@@ -15,15 +15,13 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let tasks: [String] = [
-        "Title 1 Here",
-        "Title 2 Here",
-        "Title 3 Here",
-        "Title 4 Here",
-        "Title 5 Here",
-        "Title 6 Here",
-        "Title 7 Here",
-        "Title 8 Here"
+    let tasks: [TaskTest] = [
+        TaskTest(taskTitle: "Title 1 Here"),
+        TaskTest(taskTitle: "Title 2 Here", isChecked: true),
+        TaskTest(taskTitle: "Title 3 Here", isChecked: true),
+        TaskTest(taskTitle: "Title 4 Here"),
+        TaskTest(taskTitle: "Title 5 Here",isChecked: true) ,
+        TaskTest(taskTitle: "Title 6 Here"),
     ]
     
     override func viewDidLoad() {
@@ -88,15 +86,32 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChecklistTaskCollectionViewCell", for: indexPath) as! ChecklistTaskCollectionViewCell
         
-        cell.populate(taskTitle: tasks[indexPath.row])
+        let thisTask = tasks[indexPath.row]
         
-        cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 0.6
-        cell.layer.borderColor = UIColor.systemGray4.cgColor
+        if thisTask.isChecked {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChecklistTaskCollectionViewCell", for: indexPath) as! ChecklistTaskCollectionViewCell
+            
+            cell.populate(taskTitle: thisTask.taskTitle)
+            
+            cell.layer.cornerRadius = 10
+            cell.layer.borderWidth = 0.6
+            cell.layer.borderColor = UIColor.systemGray4.cgColor
+            
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskCollectionViewCell", for: indexPath) as! TaskCollectionViewCell
+            
+            cell.populate(taskTitle: thisTask.taskTitle, taskDescription: thisTask.taskDescription)
+            
+            cell.layer.cornerRadius = 10
+            cell.layer.borderWidth = 0.6
+            cell.layer.borderColor = UIColor.systemGray4.cgColor
+            
+            return cell
+        }
         
-        return cell
     }
 }
 
@@ -106,4 +121,15 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let size = (collectionView.frame.size.width - 10)/2
         return CGSize(width: size, height: size)
     }
+}
+
+
+struct TaskTest {
+    
+    var taskTitle = "Something - 1"
+    var isChecked = false
+    var taskDescription = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo"
+    
+    var checklistDesc = "Trying ..."
+    
 }
