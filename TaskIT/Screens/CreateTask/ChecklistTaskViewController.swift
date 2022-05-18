@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CheckListTableViewCellDelegate, UITableViewDelegate {
     
@@ -24,10 +26,18 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
       "Complete science homework"
     ]
     
+    weak var authController: Auth?
+    weak var database: Firestore?
+    weak var checklistsRef: CollectionReference?
+    weak var currentUser: FirebaseAuth.User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        authController = Auth.auth()
+        database = Firestore.firestore()
         checklistDescField.delegate = self
         taskTitleField.delegate = self
         // Do any additinal setup after loading the view.
@@ -48,19 +58,46 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
 
         // TODO: Implement some valid checks here
         var allChecklistItems: Set<ChecklistUnit> = []
+        var allFirebaseChecklistItems: [ChecklistItem] = []
         
         for task in allTasks {
             guard let newChecklistItem = databaseController?.addChecklist(checklistDesc: task, isChecklist: false) else { return }
             allChecklistItems.insert(newChecklistItem)
+            var newFirebaseChecklistItem = ChecklistItem()
+            newFirebaseChecklistItem.checklistDescription = task
+            newFirebaseChecklistItem.isChecked = false
+            allFirebaseChecklistItems.append(newFirebaseChecklistItem)
         }
         
         let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
+        
+        let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allFirebaseChecklistItems)
         
         self.dismiss(animated: true)
 //        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
         
         
         
+    }
+    
+    
+    func addTaskToFirebase(taskTitle: String, taskDescription: String, isChecklist: Bool, checklistItems: [ChecklistItem]) -> TaskItem{
+        let task = TaskItem()
+        task.taskTitle = taskTitle
+        task.taskDescription = taskDescription
+        task.isChecklist = isChecklist
+        task.checklistItems = checklistItems
+        
+        do {
+//         if let taskRef = try tasksRef?.addDocument(from: task) {
+//         task.id = taskRef.documentID
+//         }
+            let taskRef =  try database!.collection("users").document((authController?.currentUser!.uid)!).collection("task").addDocument(from: task)
+        } catch {
+         print("Failed to serialize hero")
+        }
+        
+        return task
     }
     
     

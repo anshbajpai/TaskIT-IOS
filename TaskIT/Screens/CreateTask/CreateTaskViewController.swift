@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 class CreateTaskViewController: UIViewController, UITextViewDelegate{
 
@@ -14,11 +16,20 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate{
     @IBOutlet weak var taskDescField: UITextView!
     
     weak var databaseController: DatabaseProtocol?
+    
+    weak var authController: Auth?
+    weak var database: Firestore?
+    weak var checklistsRef: CollectionReference?
+    weak var currentUser: FirebaseAuth.User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        authController = Auth.auth()
+        database = Firestore.firestore()
 
         taskTitleField.delegate = self
         taskDescField.delegate = self
@@ -35,12 +46,32 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate{
     @IBAction func testBtnClicked(_ sender: Any) {
         print(taskTitleField.text)
         let myTask = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: NSSet())
+        let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: [])
         print(myTask)
         // TODO: Jump Back to main view controller
         self.dismiss(animated: true)
         print("Completed !")
     }
     
+    
+    func addTaskToFirebase(taskTitle: String, taskDescription: String, isChecklist: Bool, checklistItems: [ChecklistItem]) -> TaskItem{
+        let task = TaskItem()
+        task.taskTitle = taskTitle
+        task.taskDescription = taskDescription
+        task.isChecklist = isChecklist
+        task.checklistItems = checklistItems
+        
+        do {
+//         if let taskRef = try tasksRef?.addDocument(from: task) {
+//         task.id = taskRef.documentID
+//         }
+            let taskRef =  try database!.collection("users").document((authController?.currentUser!.uid)!).collection("task").addDocument(from: task)
+        } catch {
+         print("Failed to serialize hero")
+        }
+        
+        return task
+    }
     
     
     func barButtonItemClicked() {
