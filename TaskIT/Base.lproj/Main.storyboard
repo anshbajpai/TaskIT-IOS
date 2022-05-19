@@ -501,14 +501,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checkboxCell" id="HwX-ng-TkY" customClass="ChecklistTableViewCell" customModule="TaskIT" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HwX-ng-TkY" id="EKo-5z-Bfd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="36.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JA-2Y-Jzg" customClass="Checkbox" customModule="TaskIT" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="8" width="20" height="20.5"/>
+                                                    <rect key="frame" x="20" y="8" width="20" height="9"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="iSN-n9-sqS"/>
@@ -518,7 +518,7 @@
                                                     </connections>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib2-p3-ARq">
-                                                    <rect key="frame" x="55" y="2" width="344" height="32.5"/>
+                                                    <rect key="frame" x="55" y="2" width="344" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -894,39 +894,36 @@
             </objects>
             <point key="canvasLocation" x="4824.6376811594209" y="906.69642857142856"/>
         </scene>
-        <!--Priority View Controller-->
+        <!--Priority-->
         <scene sceneID="deA-1b-8lz">
             <objects>
-                <viewController id="Qsk-PE-cqf" customClass="PriorityViewController" customModule="TaskIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PriorityVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qsk-PE-cqf" customClass="PriorityViewController" customModule="TaskIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yGX-bf-gsV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUc-E6-3W7">
-                                <rect key="frame" x="166" y="150" width="82" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pJi-k5-g4X">
-                                <rect key="frame" x="49" y="208" width="328" height="417"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Choose Priority" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AZg-mD-iHr">
+                                <rect key="frame" x="20" y="44" width="374" height="53"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TrL-XX-v04"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TrL-XX-v04" firstAttribute="bottom" secondItem="rUc-E6-3W7" secondAttribute="bottom" constant="683" id="BoZ-x5-c63"/>
-                            <constraint firstItem="rUc-E6-3W7" firstAttribute="top" secondItem="TrL-XX-v04" secondAttribute="top" constant="106" id="PR8-ce-G8V"/>
-                            <constraint firstItem="TrL-XX-v04" firstAttribute="trailing" secondItem="rUc-E6-3W7" secondAttribute="trailing" constant="166" id="bnA-2n-gnb"/>
-                            <constraint firstItem="rUc-E6-3W7" firstAttribute="leading" secondItem="TrL-XX-v04" secondAttribute="leading" constant="166" id="rpo-7B-yEs"/>
+                            <constraint firstItem="AZg-mD-iHr" firstAttribute="leading" secondItem="TrL-XX-v04" secondAttribute="leading" constant="20" id="Eic-nn-CG9"/>
+                            <constraint firstItem="TrL-XX-v04" firstAttribute="trailing" secondItem="AZg-mD-iHr" secondAttribute="trailing" constant="20" id="G71-kW-N1e"/>
+                            <constraint firstItem="AZg-mD-iHr" firstAttribute="top" secondItem="TrL-XX-v04" secondAttribute="top" id="c9D-al-yxJ"/>
+                            <constraint firstItem="TrL-XX-v04" firstAttribute="bottom" secondItem="AZg-mD-iHr" secondAttribute="bottom" constant="765" id="e69-YK-aXo"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Priority" id="vHr-lu-bgG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZ4-tV-bJt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3353.6231884057975" y="2358.4821428571427"/>
+            <point key="canvasLocation" x="4263.768115942029" y="2358.4821428571427"/>
         </scene>
         <!--Label-->
         <scene sceneID="RUv-dT-oho">
@@ -942,7 +939,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zck-kr-gBN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4176.811594202899" y="1736.3839285714284"/>
+            <point key="canvasLocation" x="5086.9565217391309" y="1736.3839285714284"/>
         </scene>
         <!--Camera-->
         <scene sceneID="8pY-rg-WJR">
@@ -958,7 +955,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBV-TF-uwM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5077" y="1655"/>
+            <point key="canvasLocation" x="4239" y="1702"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="c1W-YH-eXf">
@@ -1025,6 +1022,9 @@
         <image name="checklist" catalog="system" width="128" height="105"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

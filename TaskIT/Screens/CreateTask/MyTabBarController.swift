@@ -44,6 +44,31 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
             present(alert, animated: true, completion: nil)
             return false
         }
+        if index == 4 {
+//            if let newVC = tabBarController.storyboard?.instantiateViewController(withIdentifier: "PriorityVC") {
+//                tabBarController.present(newVC, animated: true)
+//                return false
+//            }
+            let optionMenu = UIAlertController(title: "Choose Priority", message: "Each priority has different functionalities", preferredStyle: .actionSheet)
+            
+            let highPriority = UIAlertAction(title: "High Priority", style: .default)
+            let mediumPriority = UIAlertAction(title: "Medium Priority", style: .default)
+            let lowPriority = UIAlertAction(title: "Low Priority", style: .default)
+
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+            
+            optionMenu.addAction(highPriority)
+            optionMenu.addAction(mediumPriority)
+            optionMenu.addAction(lowPriority)
+            optionMenu.addAction(cancelAction)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+
+            
+            return false
+        }
         return true
     }
     

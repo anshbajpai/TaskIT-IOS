@@ -20,21 +20,36 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
     
     weak var databaseController: DatabaseProtocol?
 
-    var allTasks: [String] = [
-      "Buy milk from coles - 1L",
-      "Buy vegetables for dinner",
-      "Complete science homework"
-    ]
+    var allTasks: [ChecklistItem] = []
     
     weak var authController: Auth?
     weak var database: Firestore?
     weak var checklistsRef: CollectionReference?
     weak var currentUser: FirebaseAuth.User?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        allTasks = []
+        let dummyChecklist1 = ChecklistItem()
+        let dummyChecklist2 = ChecklistItem()
+        let dummyChecklist3 = ChecklistItem()
+        
+        dummyChecklist1.checklistDescription = "Buy milk from coles - 1L"
+        dummyChecklist1.isChecked = false
+        
+        dummyChecklist2.checklistDescription = "Buy vegetables for dinner"
+        dummyChecklist2.isChecked = false
+        
+        dummyChecklist3.checklistDescription = "Complete science homework"
+        dummyChecklist3.isChecked = false
+        allTasks.append(dummyChecklist1)
+        allTasks.append(dummyChecklist2)
+        allTasks.append(dummyChecklist3)
         
         authController = Auth.auth()
         database = Firestore.firestore()
@@ -43,9 +58,13 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         // Do any additinal setup after loading the view.
     }
     
+    
     @IBAction func addChecklistBtnClicked(_ sender: Any) {
         if checklistDescField.hasText {
-            allTasks.append(checklistDescField.text!)
+            let newChecklistItem = ChecklistItem()
+            newChecklistItem.isChecked = false
+            newChecklistItem.checklistDescription = checklistDescField.text
+            allTasks.append(newChecklistItem)
             checklistDescField.text = ""
             checklistTableView.reloadData()
         }
@@ -60,13 +79,15 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         var allChecklistItems: Set<ChecklistUnit> = []
         var allFirebaseChecklistItems: [ChecklistItem] = []
         
-        for task in allTasks {
-            guard let newChecklistItem = databaseController?.addChecklist(checklistDesc: task, isChecklist: false) else { return }
+        for task in self.allTasks {
+            if task.checklistDescription != nil {
+            guard let newChecklistItem = databaseController?.addChecklist(checklistDesc: task.checklistDescription!, isChecklist: task.isChecked!) else { return }
             allChecklistItems.insert(newChecklistItem)
             var newFirebaseChecklistItem = ChecklistItem()
-            newFirebaseChecklistItem.checklistDescription = task
-            newFirebaseChecklistItem.isChecked = false
+            newFirebaseChecklistItem.checklistDescription = task.checklistDescription
+            newFirebaseChecklistItem.isChecked = task.isChecked
             allFirebaseChecklistItems.append(newFirebaseChecklistItem)
+        }
         }
         
         let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
@@ -134,7 +155,9 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         guard let indexPath = checklistTableView.indexPath(for: cell) else {
             return
         }
-//        let task = allTasks[indexPath.row]
+        let task = allTasks[indexPath.row]
+        
+        task.isChecked = checked
         
     }
     
@@ -184,8 +207,10 @@ extension ChecklistTaskViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checkboxCell", for: indexPath) as! ChecklistTableViewCell
     
         cell.delegate = self
-        let task = allTasks[indexPath.row]
-        cell.set(description: task, checked: false)
+        let task = self.allTasks[indexPath.row]
+        if task.checklistDescription != nil {
+            cell.set(description: task.checklistDescription!, checked: task.isChecked!)
+        }
         return cell
     }
 }

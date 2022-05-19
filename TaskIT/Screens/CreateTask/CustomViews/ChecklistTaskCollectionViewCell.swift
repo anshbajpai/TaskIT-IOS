@@ -42,7 +42,7 @@ class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,
     
         cell.delegate = self
         let task = currentTaskChecklist.checklistDescription
-        cell.set(description: task!, checked: false)
+        cell.set(description: task!, checked: currentTaskChecklist.isChecklist)
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
