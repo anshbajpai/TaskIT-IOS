@@ -22,6 +22,8 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate{
     weak var checklistsRef: CollectionReference?
     weak var currentUser: FirebaseAuth.User?
     
+    var priorityLabel: PriorityLabel = .low
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,7 +37,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate{
         taskDescField.delegate = self
         let date = Date()
         let format = date.getFormattedDate(format: "MMM d, yyyy")
-        self.tabBarController?.navigationItem.title = format
+        self.navigationController?.navigationBar.topItem?.title = format
         // Do any additional setup after loading the view.
         
        
@@ -45,7 +47,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate{
     
     @IBAction func testBtnClicked(_ sender: Any) {
         print(taskTitleField.text)
-        let myTask = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: NSSet())
+        let myTask = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: NSSet(), priorityLabel: self.priorityLabel)
         let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: [])
         print(myTask)
         // TODO: Jump Back to main view controller

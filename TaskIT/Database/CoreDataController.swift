@@ -39,11 +39,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
      }
     }
     
-    func addTask(taskTitle: String, taskDescription: String, isChecklist: Bool, checklistItems: NSSet) -> TaskUnit {
+    func addTask(taskTitle: String, taskDescription: String, isChecklist: Bool, checklistItems: NSSet, priorityLabel: PriorityLabel) -> TaskUnit {
         let taskItem = NSEntityDescription.insertNewObject(forEntityName: "TaskUnit", into: persistentContainer.viewContext) as! TaskUnit
         taskItem.taskTitle = taskTitle
         taskItem.taskDescription = taskDescription
         taskItem.isChecklist = isChecklist
+        taskItem.myPriorityLabel = priorityLabel
         if isChecklist {
             taskItem.addToChecklistItems(checklistItems)
         }

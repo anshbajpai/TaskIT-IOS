@@ -51,9 +51,20 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
 //            }
             let optionMenu = UIAlertController(title: "Choose Priority", message: "Each priority has different functionalities", preferredStyle: .actionSheet)
             
-            let highPriority = UIAlertAction(title: "High Priority", style: .default)
-            let mediumPriority = UIAlertAction(title: "Medium Priority", style: .default)
-            let lowPriority = UIAlertAction(title: "Low Priority", style: .default)
+            let highPriority = UIAlertAction(title: "High Priority", style: .default){(action:UIAlertAction) in
+                let myView = self.viewControllers![0].children[0] as! CreateTaskViewController
+                myView.priorityLabel = .high
+            }
+            let mediumPriority = UIAlertAction(title: "Medium Priority", style: .default){(action:UIAlertAction) in
+                
+                let myView = self.viewControllers![0].children[0] as! CreateTaskViewController
+                myView.priorityLabel = .medium
+            }
+            let lowPriority = UIAlertAction(title: "Low Priority", style: .default){(action:UIAlertAction) in
+                let myView = self.viewControllers![0].children[0] as! CreateTaskViewController
+                myView.priorityLabel = .low
+                
+            }
 
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

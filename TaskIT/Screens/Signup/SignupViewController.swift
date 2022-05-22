@@ -68,14 +68,15 @@ class SignupViewController: UIViewController {
                     print("User")
                     print(user.uid)
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC")
-                    newViewController.modalPresentationStyle = .fullScreen
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "MyTabBarContoller")
+                    //newViewController.modalPresentationStyle = .fullScreen
                     
-                    let navViewController = MainNavigationController(rootViewController: newViewController)
-                    
-                    navViewController.modalPresentationStyle = .fullScreen
-
-                            self.present(navViewController, animated: true, completion: nil)
+                    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(newViewController)
+//                    let navViewController = MainNavigationController(rootViewController: newViewController)
+//
+//                    navViewController.modalPresentationStyle = .fullScreen
+//
+//                            self.present(navViewController, animated: true, completion: nil)
 
                 } else {
                   // No User is signed in. Show user the login screen
@@ -125,10 +126,16 @@ class SignupViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC")
+                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "MyTabBarContoller") as! MyTabBarController
+                        
+                        //newViewController.firstSignUp = true
                         newViewController.modalPresentationStyle = .fullScreen
                         
+                        
+                        
                         let navViewController = MainNavigationController(rootViewController: newViewController)
+                        
+                        
                         
                         navViewController.modalPresentationStyle = .fullScreen
 

@@ -2,12 +2,19 @@
 //  TaskUnit+CoreDataProperties.swift
 //  TaskIT
 //
-//  Created by Ansh Bajpai on 10/05/22.
+//  Created by Ansh Bajpai on 19/05/22.
 //
 //
 
 import Foundation
 import CoreData
+
+
+enum PriorityLabel: Int32 {
+    case high = 0
+    case medium = 1
+    case low = 2
+}
 
 
 extension TaskUnit {
@@ -16,9 +23,10 @@ extension TaskUnit {
         return NSFetchRequest<TaskUnit>(entityName: "TaskUnit")
     }
 
-    @NSManaged public var taskTitle: String?
-    @NSManaged public var taskDescription: String?
     @NSManaged public var isChecklist: Bool
+    @NSManaged public var taskDescription: String?
+    @NSManaged public var taskTitle: String?
+    @NSManaged public var priorityLabel: Int32
     @NSManaged public var checklistItems: NSSet?
 
 }
@@ -42,4 +50,16 @@ extension TaskUnit {
 
 extension TaskUnit : Identifiable {
 
+}
+
+extension TaskUnit {
+    var myPriorityLabel: PriorityLabel {
+        get {
+            return PriorityLabel(rawValue: self.priorityLabel)!
+        }
+        
+        set {
+            self.priorityLabel = newValue.rawValue
+        }
+    }
 }

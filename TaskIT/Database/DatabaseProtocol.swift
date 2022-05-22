@@ -31,7 +31,7 @@ protocol DatabaseProtocol: AnyObject {
  func addListener(listener: DatabaseListener)
  func removeListener(listener: DatabaseListener)
 
- func addTask(taskTitle: String, taskDescription: String, isChecklist: Bool, checklistItems: NSSet) -> TaskUnit
+    func addTask(taskTitle: String, taskDescription: String, isChecklist: Bool, checklistItems: NSSet, priorityLabel: PriorityLabel) -> TaskUnit
  func deleteTask(taskNote: TaskUnit)
     
 func addChecklist(checklistDesc: String, isChecklist: Bool) -> ChecklistUnit 

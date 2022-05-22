@@ -42,6 +42,10 @@
 		6A22627C2812D1EA00F0A1D4 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 6A22627B2812D1EA00F0A1D4 /* FacebookBasics */; };
 		6A22627E2812D1EA00F0A1D4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6A22627D2812D1EA00F0A1D4 /* FacebookCore */; };
 		6A2262802812D1EA00F0A1D4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 6A22627F2812D1EA00F0A1D4 /* FacebookLogin */; };
+		6A235E0F28364B68004A20B6 /* TaskUnit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A235E0B28364B68004A20B6 /* TaskUnit+CoreDataClass.swift */; };
+		6A235E1028364B68004A20B6 /* TaskUnit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A235E0C28364B68004A20B6 /* TaskUnit+CoreDataProperties.swift */; };
+		6A235E1128364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A235E0D28364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift */; };
+		6A235E1228364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A235E0E28364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift */; };
 		6A31ED34282B6BFF00AD0CDA /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A31ED33282B6BFF00AD0CDA /* ChecklistTableViewCell.swift */; };
 		6A5913E228043C8500FA5276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5913E128043C8500FA5276 /* AppDelegate.swift */; };
 		6A5913E428043C8500FA5276 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5913E328043C8500FA5276 /* SceneDelegate.swift */; };
@@ -57,10 +61,6 @@
 		6A7CB3482829600200F2F573 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB3472829600200F2F573 /* DatabaseProtocol.swift */; };
 		6A7CB3632829683E00F2F573 /* TaskIT-Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB3612829683E00F2F573 /* TaskIT-Model.xcdatamodeld */; };
 		6A7CB373282A0D0700F2F573 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB372282A0D0600F2F573 /* CoreDataController.swift */; };
-		6A7CB378282A113800F2F573 /* TaskUnit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB374282A113800F2F573 /* TaskUnit+CoreDataClass.swift */; };
-		6A7CB379282A113800F2F573 /* TaskUnit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB375282A113800F2F573 /* TaskUnit+CoreDataProperties.swift */; };
-		6A7CB37A282A113800F2F573 /* ChecklistUnit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB376282A113800F2F573 /* ChecklistUnit+CoreDataClass.swift */; };
-		6A7CB37B282A113800F2F573 /* ChecklistUnit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB377282A113800F2F573 /* ChecklistUnit+CoreDataProperties.swift */; };
 		6A7CB37D282A206E00F2F573 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB37C282A206D00F2F573 /* MyTabBarController.swift */; };
 		6A7CB37F282A452300F2F573 /* ChecklistTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7CB37E282A452100F2F573 /* ChecklistTaskViewController.swift */; };
 		6A8940B42830DD81007D794E /* TaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8940B32830DD81007D794E /* TaskCollectionViewCell.swift */; };
@@ -81,6 +81,10 @@
 		6A20902C281E656B00EDEEC2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6A21C62D28128CEE00A452A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A2262792812D04800F0A1D4 /* TaskIT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaskIT.entitlements; sourceTree = "<group>"; };
+		6A235E0B28364B68004A20B6 /* TaskUnit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskUnit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		6A235E0C28364B68004A20B6 /* TaskUnit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskUnit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		6A235E0D28364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChecklistUnit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		6A235E0E28364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChecklistUnit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6A31ED33282B6BFF00AD0CDA /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		6A5913DE28043C8500FA5276 /* TaskIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A5913E128043C8500FA5276 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,10 +101,6 @@
 		6A7CB3472829600200F2F573 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		6A7CB3622829683E00F2F573 /* TaskIT-Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TaskIT-Model.xcdatamodel"; sourceTree = "<group>"; };
 		6A7CB372282A0D0600F2F573 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
-		6A7CB374282A113800F2F573 /* TaskUnit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskUnit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		6A7CB375282A113800F2F573 /* TaskUnit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskUnit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		6A7CB376282A113800F2F573 /* ChecklistUnit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChecklistUnit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		6A7CB377282A113800F2F573 /* ChecklistUnit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChecklistUnit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6A7CB37C282A206D00F2F573 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		6A7CB37E282A452100F2F573 /* ChecklistTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTaskViewController.swift; sourceTree = "<group>"; };
 		6A8940B32830DD81007D794E /* TaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -246,11 +246,11 @@
 		6A7CB334282906F900F2F573 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				6A235E0B28364B68004A20B6 /* TaskUnit+CoreDataClass.swift */,
+				6A235E0C28364B68004A20B6 /* TaskUnit+CoreDataProperties.swift */,
+				6A235E0D28364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift */,
+				6A235E0E28364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift */,
 				6A0F81CA282CE03000605F7F /* FirebaseDataModel */,
-				6A7CB374282A113800F2F573 /* TaskUnit+CoreDataClass.swift */,
-				6A7CB375282A113800F2F573 /* TaskUnit+CoreDataProperties.swift */,
-				6A7CB376282A113800F2F573 /* ChecklistUnit+CoreDataClass.swift */,
-				6A7CB377282A113800F2F573 /* ChecklistUnit+CoreDataProperties.swift */,
 				6A7CB3612829683E00F2F573 /* TaskIT-Model.xcdatamodeld */,
 			);
 			path = DataModel;
@@ -425,21 +425,23 @@
 				6A8940B62831194B007D794E /* ChecklistTaskCollectionViewCell.swift in Sources */,
 				6A5913E628043C8500FA5276 /* ViewController.swift in Sources */,
 				6A7CB34628295F8300F2F573 /* MulticastDelegate.swift in Sources */,
+				6A235E1128364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift in Sources */,
 				6A7CB3632829683E00F2F573 /* TaskIT-Model.xcdatamodeld in Sources */,
 				6AD5654C282B66E700A6F637 /* Checkbox.swift in Sources */,
+				6A235E0F28364B68004A20B6 /* TaskUnit+CoreDataClass.swift in Sources */,
 				6A8940B42830DD81007D794E /* TaskCollectionViewCell.swift in Sources */,
-				6A7CB37A282A113800F2F573 /* ChecklistUnit+CoreDataClass.swift in Sources */,
 				6A8940B82831418D007D794E /* ChecklistHomeTableViewCell.swift in Sources */,
 				6AF52FA928239F8300EADB11 /* CreateTaskViewController.swift in Sources */,
+				6A235E1028364B68004A20B6 /* TaskUnit+CoreDataProperties.swift in Sources */,
 				6AA8F6FE280D3CAC00106983 /* SignupViewController.swift in Sources */,
 				6A0F81C9282CD46800605F7F /* PriorityViewController.swift in Sources */,
+				6A235E1228364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift in Sources */,
 				6AD5C240282CE47100236AAE /* FirebaseController.swift in Sources */,
 				6A5913E228043C8500FA5276 /* AppDelegate.swift in Sources */,
 				6A7CB3482829600200F2F573 /* DatabaseProtocol.swift in Sources */,
 				6A7CB37D282A206E00F2F573 /* MyTabBarController.swift in Sources */,
 				6A5913E428043C8500FA5276 /* SceneDelegate.swift in Sources */,
 				6A20902D281E656B00EDEEC2 /* HomeViewController.swift in Sources */,
-				6A7CB379282A113800F2F573 /* TaskUnit+CoreDataProperties.swift in Sources */,
 				6A7CB37F282A452300F2F573 /* ChecklistTaskViewController.swift in Sources */,
 				6A31ED34282B6BFF00AD0CDA /* ChecklistTableViewCell.swift in Sources */,
 				6AA8F701280D5FBC00106983 /* LoginViewController.swift in Sources */,
@@ -448,8 +450,6 @@
 				6A5913FB28052D2800FA5276 /* OnboardingPage.swift in Sources */,
 				6A7CB373282A0D0700F2F573 /* CoreDataController.swift in Sources */,
 				6AD5C23C282CE0EE00236AAE /* TaskItem.swift in Sources */,
-				6A7CB378282A113800F2F573 /* TaskUnit+CoreDataClass.swift in Sources */,
-				6A7CB37B282A113800F2F573 /* ChecklistUnit+CoreDataProperties.swift in Sources */,
 				6A5913FD2805332F00FA5276 /* OnboardingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

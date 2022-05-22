@@ -55,6 +55,10 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         database = Firestore.firestore()
         checklistDescField.delegate = self
         taskTitleField.delegate = self
+        
+        let date = Date()
+        let format = date.getFormattedDate(format: "MMM d, yyyy")
+        self.navigationController?.navigationBar.topItem?.title = format
         // Do any additinal setup after loading the view.
     }
     
@@ -90,7 +94,7 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         }
         }
         
-        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
+        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet, priorityLabel: .low)
         
         let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allFirebaseChecklistItems)
         

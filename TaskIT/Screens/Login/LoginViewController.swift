@@ -49,10 +49,12 @@ class LoginViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC")
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+                    newViewController.firstSignUp = true
                     newViewController.modalPresentationStyle = .fullScreen
                     
-                    let navViewController = MainNavigationController(rootViewController: newViewController)
+                    
+                    let navViewController = MainNavigationController(rootViewController: MyTabBarController())
                     
                     navViewController.modalPresentationStyle = .fullScreen
 
