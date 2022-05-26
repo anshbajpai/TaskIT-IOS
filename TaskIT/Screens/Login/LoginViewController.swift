@@ -49,16 +49,15 @@ class LoginViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
-                    newViewController.firstSignUp = true
-                    newViewController.modalPresentationStyle = .fullScreen
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "MyTabBarContoller")
+                    //newViewController.modalPresentationStyle = .fullScreen
                     
+                    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(newViewController)
+                    //let navViewController = MainNavigationController(rootViewController: MyTabBarController())
                     
-                    let navViewController = MainNavigationController(rootViewController: MyTabBarController())
-                    
-                    navViewController.modalPresentationStyle = .fullScreen
+                    //navViewController.modalPresentationStyle = .fullScreen
 
-                            self.present(navViewController, animated: true, completion: nil)
+                            //self.present(navViewController, animated: true, completion: nil)
                 }
                 
                 print("User logged in")

@@ -47,6 +47,7 @@
 		6A235E1128364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A235E0D28364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift */; };
 		6A235E1228364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A235E0E28364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift */; };
 		6A31ED34282B6BFF00AD0CDA /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A31ED33282B6BFF00AD0CDA /* ChecklistTableViewCell.swift */; };
+		6A4D9208283FDF20005FFECE /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D9207283FDF20005FFECE /* CreateTaskViewController.swift */; };
 		6A5913E228043C8500FA5276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5913E128043C8500FA5276 /* AppDelegate.swift */; };
 		6A5913E428043C8500FA5276 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5913E328043C8500FA5276 /* SceneDelegate.swift */; };
 		6A5913E628043C8500FA5276 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5913E528043C8500FA5276 /* ViewController.swift */; };
@@ -66,14 +67,16 @@
 		6A8940B42830DD81007D794E /* TaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8940B32830DD81007D794E /* TaskCollectionViewCell.swift */; };
 		6A8940B62831194B007D794E /* ChecklistTaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8940B52831194B007D794E /* ChecklistTaskCollectionViewCell.swift */; };
 		6A8940B82831418D007D794E /* ChecklistHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8940B72831418D007D794E /* ChecklistHomeTableViewCell.swift */; };
+		6A9F95F0283BDFA7002935A8 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9F95EF283BDFA6002935A8 /* ReminderViewController.swift */; };
 		6AA8F6FE280D3CAC00106983 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8F6FD280D3CAC00106983 /* SignupViewController.swift */; };
 		6AA8F701280D5FBC00106983 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA8F700280D5FBC00106983 /* LoginViewController.swift */; };
+		6AB4E371283DFD8200CBF738 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4E370283DFD8200CBF738 /* SettingsViewController.swift */; };
+		6AB4E374283E1C0800CBF738 /* QuoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB4E373283E1C0800CBF738 /* QuoteData.swift */; };
 		6ABA5E6328178E4C001E007C /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABA5E6228178E4C001E007C /* MainNavigationController.swift */; };
 		6AD5654C282B66E700A6F637 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5654B282B66E600A6F637 /* Checkbox.swift */; };
 		6AD5C23C282CE0EE00236AAE /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5C23B282CE0EE00236AAE /* TaskItem.swift */; };
 		6AD5C23E282CE1AC00236AAE /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5C23D282CE1AC00236AAE /* ChecklistItem.swift */; };
 		6AD5C240282CE47100236AAE /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5C23F282CE47100236AAE /* FirebaseController.swift */; };
-		6AF52FA928239F8300EADB11 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF52FA828239F8300EADB11 /* CreateTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +89,7 @@
 		6A235E0D28364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChecklistUnit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		6A235E0E28364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChecklistUnit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6A31ED33282B6BFF00AD0CDA /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
+		6A4D9207283FDF20005FFECE /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		6A5913DE28043C8500FA5276 /* TaskIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A5913E128043C8500FA5276 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A5913E328043C8500FA5276 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,14 +110,16 @@
 		6A8940B32830DD81007D794E /* TaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A8940B52831194B007D794E /* ChecklistTaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A8940B72831418D007D794E /* ChecklistHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistHomeTableViewCell.swift; sourceTree = "<group>"; };
+		6A9F95EF283BDFA6002935A8 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		6AA8F6FD280D3CAC00106983 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		6AA8F700280D5FBC00106983 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6AB4E370283DFD8200CBF738 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6AB4E373283E1C0800CBF738 /* QuoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteData.swift; sourceTree = "<group>"; };
 		6ABA5E6228178E4C001E007C /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		6AD5654B282B66E600A6F637 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		6AD5C23B282CE0EE00236AAE /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		6AD5C23D282CE1AC00236AAE /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		6AD5C23F282CE47100236AAE /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
-		6AF52FA828239F8300EADB11 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,8 @@
 		6A5913F528052BDB00FA5276 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6AB4E36F283DFD6C00CBF738 /* Settings */,
+				6A9F95EE283BDF72002935A8 /* Reminder */,
 				6AF52FA728239F6400EADB11 /* CreateTask */,
 				6A20902B281E653100EDEEC2 /* Home */,
 				6AA8F6FF280D5FA400106983 /* Login */,
@@ -267,6 +275,14 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		6A9F95EE283BDF72002935A8 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				6A9F95EF283BDFA6002935A8 /* ReminderViewController.swift */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
 		6AA8F6FC280D3C7700106983 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +297,23 @@
 				6AA8F700280D5FBC00106983 /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		6AB4E36F283DFD6C00CBF738 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6AB4E372283E1BD500CBF738 /* ApiData */,
+				6AB4E370283DFD8200CBF738 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6AB4E372283E1BD500CBF738 /* ApiData */ = {
+			isa = PBXGroup;
+			children = (
+				6AB4E373283E1C0800CBF738 /* QuoteData.swift */,
+			);
+			path = ApiData;
 			sourceTree = "<group>";
 		};
 		6AD5654A282B66B500A6F637 /* CustomViews */ = {
@@ -298,11 +331,11 @@
 			isa = PBXGroup;
 			children = (
 				6AD5654A282B66B500A6F637 /* CustomViews */,
-				6AF52FA828239F8300EADB11 /* CreateTaskViewController.swift */,
 				6A7CB37C282A206D00F2F573 /* MyTabBarController.swift */,
 				6A7CB37E282A452100F2F573 /* ChecklistTaskViewController.swift */,
 				6A0F81C8282CD46800605F7F /* PriorityViewController.swift */,
 				6A8940B72831418D007D794E /* ChecklistHomeTableViewCell.swift */,
+				6A4D9207283FDF20005FFECE /* CreateTaskViewController.swift */,
 			);
 			path = CreateTask;
 			sourceTree = "<group>";
@@ -423,15 +456,16 @@
 			files = (
 				6ABA5E6328178E4C001E007C /* MainNavigationController.swift in Sources */,
 				6A8940B62831194B007D794E /* ChecklistTaskCollectionViewCell.swift in Sources */,
+				6A4D9208283FDF20005FFECE /* CreateTaskViewController.swift in Sources */,
 				6A5913E628043C8500FA5276 /* ViewController.swift in Sources */,
 				6A7CB34628295F8300F2F573 /* MulticastDelegate.swift in Sources */,
 				6A235E1128364B68004A20B6 /* ChecklistUnit+CoreDataClass.swift in Sources */,
 				6A7CB3632829683E00F2F573 /* TaskIT-Model.xcdatamodeld in Sources */,
 				6AD5654C282B66E700A6F637 /* Checkbox.swift in Sources */,
+				6AB4E371283DFD8200CBF738 /* SettingsViewController.swift in Sources */,
 				6A235E0F28364B68004A20B6 /* TaskUnit+CoreDataClass.swift in Sources */,
 				6A8940B42830DD81007D794E /* TaskCollectionViewCell.swift in Sources */,
 				6A8940B82831418D007D794E /* ChecklistHomeTableViewCell.swift in Sources */,
-				6AF52FA928239F8300EADB11 /* CreateTaskViewController.swift in Sources */,
 				6A235E1028364B68004A20B6 /* TaskUnit+CoreDataProperties.swift in Sources */,
 				6AA8F6FE280D3CAC00106983 /* SignupViewController.swift in Sources */,
 				6A0F81C9282CD46800605F7F /* PriorityViewController.swift in Sources */,
@@ -440,6 +474,7 @@
 				6A5913E228043C8500FA5276 /* AppDelegate.swift in Sources */,
 				6A7CB3482829600200F2F573 /* DatabaseProtocol.swift in Sources */,
 				6A7CB37D282A206E00F2F573 /* MyTabBarController.swift in Sources */,
+				6A9F95F0283BDFA7002935A8 /* ReminderViewController.swift in Sources */,
 				6A5913E428043C8500FA5276 /* SceneDelegate.swift in Sources */,
 				6A20902D281E656B00EDEEC2 /* HomeViewController.swift in Sources */,
 				6A7CB37F282A452300F2F573 /* ChecklistTaskViewController.swift in Sources */,
@@ -449,6 +484,7 @@
 				6AD5C23E282CE1AC00236AAE /* ChecklistItem.swift in Sources */,
 				6A5913FB28052D2800FA5276 /* OnboardingPage.swift in Sources */,
 				6A7CB373282A0D0700F2F573 /* CoreDataController.swift in Sources */,
+				6AB4E374283E1C0800CBF738 /* QuoteData.swift in Sources */,
 				6AD5C23C282CE0EE00236AAE /* TaskItem.swift in Sources */,
 				6A5913FD2805332F00FA5276 /* OnboardingCollectionViewCell.swift in Sources */,
 			);

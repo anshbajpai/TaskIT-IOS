@@ -13,7 +13,7 @@ import FirebaseFirestoreSwift
 import FirebaseFunctions
 import FirebaseFunctionsSwift
 
-class HomeViewController: UIViewController, DatabaseListener {
+class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegate, UISearchDisplayDelegate {
     
     
     
@@ -30,7 +30,8 @@ class HomeViewController: UIViewController, DatabaseListener {
     
     var firstSignUp: Bool = false
 
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     let tasks: [TaskTest] = [
         TaskTest(taskTitle: "Title 1 Here"),
@@ -48,6 +49,7 @@ class HomeViewController: UIViewController, DatabaseListener {
         databaseController = appDelegate?.databaseController
         
 
+        searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -97,11 +99,19 @@ class HomeViewController: UIViewController, DatabaseListener {
     }
 
     
+    @IBAction func settingsBtnClicked(_ sender: Any) {
+        print("Clicked")
+        performSegue(withIdentifier: "settingsSegue", sender: nil)
+    }
+    
     private func syncWithFirebase(){
       
             let firestoreDatabase = Firestore.firestore()
                
             let authController = Auth.auth()
+        authController.addStateDidChangeListener { auth, user in
+            print(auth)
+        }
         firestoreDatabase.collection("users").document(authController.currentUser!.uid).collection("task").getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -155,6 +165,18 @@ class HomeViewController: UIViewController, DatabaseListener {
         self.performSegue(withIdentifier: "createTaskSegue", sender: nil)
     }
 
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Inside")
+        if !searchText.isEmpty {
+            allTasks = (databaseController?.searchAllTasks(searchQuery: searchText))!
+        }
+        else {
+            allTasks = (databaseController?.getAllTasks())!
+        }
+        collectionView.reloadData()
+    }
     /*
     // MARK: - Navigation
 
@@ -222,3 +244,4 @@ struct TaskTest {
     var checklistDesc = "Trying ..."
     
 }
+

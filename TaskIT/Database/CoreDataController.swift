@@ -69,6 +69,75 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         taskItem.removeFromChecklistItems(checklistItem)
     }
     
+    func deleteAllTasks() {
+        // Specify a batch to delete with a fetch request
+        
+        do {
+            let storeContainer =
+                persistentContainer.persistentStoreCoordinator
+
+            // Delete each existing persistent store
+            for store in storeContainer.persistentStores {
+                try storeContainer.destroyPersistentStore(
+                    at: store.url!,
+                    ofType: store.type,
+                    options: nil
+                )
+            }
+
+            // Re-create the persistent container
+            persistentContainer = NSPersistentContainer(
+                name: "TaskIT-Model" // the name of
+                // a .xcdatamodeld file
+            )
+
+            // Calling loadPersistentStores will re-create the
+            // persistent stores
+            persistentContainer.loadPersistentStores {
+                (store, error) in
+                // Handle errors
+            }
+        }
+        catch let error as NSError {
+            // Error
+        }
+    }
+    
+    func searchAllTasks(searchQuery: String?) -> [TaskUnit] {
+        // Code
+        var predicate: NSPredicate = NSPredicate()
+        predicate = NSPredicate(format: "taskTitle contains[c] '\(searchQuery ?? "")'")
+        let managedObjectContext = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:"TaskUnit")
+        fetchRequest.predicate = predicate
+        var allTasks:[TaskUnit] = []
+        do {
+            allTasks = try managedObjectContext.fetch(fetchRequest) as! [TaskUnit]
+        } catch let error as NSError {
+            print("Could not fetch. \(error)")
+        }
+        
+        return allTasks
+    }
+    
+    func getAllTasks() -> [TaskUnit] {
+        let allTasks = fetchAllTasks()
+        
+        return allTasks
+    }
+    
+    func deleteAllChecklistItems() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ChecklistUnit")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try persistentContainer.viewContext.execute(deleteRequest)
+            self.cleanup()
+        } catch let error as NSError {
+            // TODO: handle the error
+        }
+    }
+    
     func deleteTask(taskNote: TaskUnit) {
         persistentContainer.viewContext.delete(taskNote)
     }

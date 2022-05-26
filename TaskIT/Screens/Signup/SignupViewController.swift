@@ -129,17 +129,19 @@ class SignupViewController: UIViewController {
                         let newViewController = storyBoard.instantiateViewController(withIdentifier: "MyTabBarContoller") as! MyTabBarController
                         
                         //newViewController.firstSignUp = true
-                        newViewController.modalPresentationStyle = .fullScreen
+                       // newViewController.modalPresentationStyle = .fullScreen
+                        
+                        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(newViewController)
                         
                         
                         
-                        let navViewController = MainNavigationController(rootViewController: newViewController)
+                        //let navViewController = MainNavigationController(rootViewController: newViewController)
                         
                         
                         
-                        navViewController.modalPresentationStyle = .fullScreen
+                        //navViewController.modalPresentationStyle = .fullScreen
 
-                                self.present(navViewController, animated: true, completion: nil)
+                                //self.present(navViewController, animated: true, completion: nil)
                     }
                 }
                 else {
@@ -173,6 +175,8 @@ class SignupViewController: UIViewController {
 
           if let error = error {
             // ...
+            print("ERROR")
+            print(error)
             return
           }
 
@@ -227,6 +231,8 @@ extension UIViewController {
 
           if let error = error {
 
+              print("ERROR")
+              print(error)
             // ...
             return
           }
@@ -270,8 +276,12 @@ extension UIViewController {
                     
                     Auth.auth().signIn(with: facebookCredentials){ authResult, error in
                         if let error = error {
+                            print("ERROR")
+                            print(error)
                             print(error.localizedDescription)
                             self.displayMessage(title: "Error", message: "Facebook Login failed! Try Again")
+                            
+                            return
                         }
                     }
                     
