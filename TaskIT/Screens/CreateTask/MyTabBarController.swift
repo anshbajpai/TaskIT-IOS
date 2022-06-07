@@ -25,7 +25,11 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         guard let index = viewControllers?.index(of: viewController) else {
             return false
         }
-        if index == 3 {
+        if index == 1 {
+            let myView = self.viewControllers![0].children[0] as! HomeViewController
+            myView.shouldSync = false
+        }
+        if index == 2 {
 
             let alert = UIAlertController(title: "Are you sure ?", message: "Do you want to shift to checklist mode ?", preferredStyle: .alert)
 

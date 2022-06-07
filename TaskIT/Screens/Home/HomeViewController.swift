@@ -29,6 +29,8 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
     weak var databaseController: DatabaseProtocol?
     
     var firstSignUp: Bool = false
+    
+    var shouldSync: Bool = true
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -168,7 +170,7 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
     func onAllTasksChange(change: DatabaseChange, allTaskNote: [TaskUnit]) {
         print("Triggered")
         allTasks = allTaskNote
-        if allTasks.count == 0 {
+        if allTasks.count == 0 && self.shouldSync{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.syncWithFirebase()
             }
@@ -208,6 +210,25 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if allTasks.count == 0 {
+//            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
+//            noDataLabel.text          = "No Tasks"
+//            noDataLabel.textColor     = UIColor.blue
+//            noDataLabel.textAlignment = .center
+//            let imageView : UIImageView = {
+//                let iv = UIImageView()
+//                iv.image = UIImage(named:"archivebox")
+//                iv.contentMode = .scaleAspectFill
+//                return iv
+//            }()
+//            collectionView.backgroundView  = imageView
+            collectionView.setEmptyMessage("No Tasks", UIImage(systemName: "archivebox")!)
+
+        }
+        else {
+            collectionView.backgroundView  = nil
+        }
         return allTasks.count
     }
     
@@ -271,3 +292,47 @@ struct TaskTest {
     
 }
 
+
+
+extension UICollectionView {
+
+        func setEmptyMessage(_ message: String,_ img:UIImage) {
+            
+            let image = UIImageView()
+            image.contentMode = .scaleToFill
+            let screenSize: CGRect = UIScreen.main.bounds
+            image.frame = CGRect(x: 0, y: 0, width: 50, height: screenSize.height * 0.4)
+            image.image = img
+            
+            
+            let messageLabel = UILabel()
+            messageLabel.text = message
+            messageLabel.font = UIFont.boldSystemFont(ofSize: 20)
+            messageLabel.textColor = .gray
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
+            messageLabel.sizeToFit()
+            
+            let mainView = UIView()
+            mainView.addSubview(image)
+            mainView.addSubview(messageLabel)
+           
+            //Auto Layout
+            image.translatesAutoresizingMaskIntoConstraints = false
+            image.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            image.widthAnchor.constraint(equalToConstant: 60).isActive = true
+            image.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: 10).isActive = true
+            image.centerYAnchor.constraint(equalTo: mainView.centerYAnchor , constant: 0).isActive = true
+            
+            messageLabel.translatesAutoresizingMaskIntoConstraints = false
+            messageLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 20).isActive = true
+            messageLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 10).isActive = true
+            messageLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: 10).isActive = true
+            
+            self.backgroundView = mainView
+        }
+        
+        func restoreBackgroundView() {
+            self.backgroundView = nil
+        }
+    }
