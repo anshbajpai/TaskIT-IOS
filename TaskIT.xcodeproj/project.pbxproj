@@ -223,6 +223,7 @@
 		6A5913F528052BDB00FA5276 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6A6E06AD284093D100830913 /* ChecklistTask */,
 				6AB4E36F283DFD6C00CBF738 /* Settings */,
 				6A9F95EE283BDF72002935A8 /* Reminder */,
 				6AF52FA728239F6400EADB11 /* CreateTask */,
@@ -249,6 +250,15 @@
 				6A5913FA28052D2800FA5276 /* OnboardingPage.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6A6E06AD284093D100830913 /* ChecklistTask */ = {
+			isa = PBXGroup;
+			children = (
+				6A8940B72831418D007D794E /* ChecklistHomeTableViewCell.swift */,
+				6A7CB37E282A452100F2F573 /* ChecklistTaskViewController.swift */,
+			);
+			path = ChecklistTask;
 			sourceTree = "<group>";
 		};
 		6A7CB334282906F900F2F573 /* DataModel */ = {
@@ -332,9 +342,7 @@
 			children = (
 				6AD5654A282B66B500A6F637 /* CustomViews */,
 				6A7CB37C282A206D00F2F573 /* MyTabBarController.swift */,
-				6A7CB37E282A452100F2F573 /* ChecklistTaskViewController.swift */,
 				6A0F81C8282CD46800605F7F /* PriorityViewController.swift */,
-				6A8940B72831418D007D794E /* ChecklistHomeTableViewCell.swift */,
 				6A4D9207283FDF20005FFECE /* CreateTaskViewController.swift */,
 			);
 			path = CreateTask;

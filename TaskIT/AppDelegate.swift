@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         notificationCenter.getNotificationSettings { notificationSettings in
             if notificationSettings.authorizationStatus == .notDetermined {
                 
-                notificationCenter.requestAuthorization(options: [.alert]) { granted, error in
+                notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                     self.notificationsEnabled = granted
                     if granted {
                         self.setupNotifications()

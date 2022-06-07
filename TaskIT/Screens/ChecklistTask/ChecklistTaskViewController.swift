@@ -19,6 +19,8 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
     @IBOutlet weak var checklistTableView: UITableView!
     
     weak var databaseController: DatabaseProtocol?
+    
+    var priorityLabel: PriorityLabel = .medium
 
     var allTasks: [ChecklistItem] = []
     
@@ -75,6 +77,11 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
     }
     
     
+    @IBAction func reminderBtnClicked(_ sender: Any) {
+        
+    }
+    
+    
     @IBAction func testBtnClicked(_ sender: Any) {
         
         
@@ -94,14 +101,45 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         }
         }
         
-        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet, priorityLabel: .low)
+        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet, priorityLabel: self.priorityLabel)
         
         let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allFirebaseChecklistItems)
         
-        self.dismiss(animated: true)
+        self.tabBarController?.selectedIndex = 0
 //        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
         
         
+        
+    }
+    
+    
+    @IBAction func labelBtnClicked(_ sender: Any) {
+        
+        let optionMenu = UIAlertController(title: "Choose Priority", message: "Each priority has different functionalities", preferredStyle: .actionSheet)
+        
+        let highPriority = UIAlertAction(title: "High Priority", style: .default){(action:UIAlertAction) in
+
+            self.priorityLabel = .high
+        }
+        let mediumPriority = UIAlertAction(title: "Medium Priority", style: .default){(action:UIAlertAction) in
+            
+            self.priorityLabel = .medium
+        }
+        let lowPriority = UIAlertAction(title: "Low Priority", style: .default){(action:UIAlertAction) in
+            self.priorityLabel = .low
+            
+        }
+
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        
+        optionMenu.addAction(highPriority)
+        optionMenu.addAction(mediumPriority)
+        optionMenu.addAction(lowPriority)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
         
     }
     
@@ -112,6 +150,7 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         task.taskDescription = taskDescription
         task.isChecklist = isChecklist
         task.checklistItems = checklistItems
+        task.taskPriorityLabel = self.priorityLabel
         
         do {
 //         if let taskRef = try tasksRef?.addDocument(from: task) {

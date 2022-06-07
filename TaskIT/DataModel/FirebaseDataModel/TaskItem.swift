@@ -15,19 +15,24 @@ class TaskItem: NSObject, Codable {
     var taskDescription: String?
     var isChecklist: Bool?
     var checklistItems: [ChecklistItem] = []
-    var priorityLabel: Int?
+    var priorityLabel: Int32?
     
 }
 
 
 extension TaskItem {
-    var taskPriorityLabel: Priority {
+    var taskPriorityLabel: PriorityLabel? {
         get {
-            return Priority(rawValue: self.priorityLabel!)!
+            if self.priorityLabel == nil {
+                return PriorityLabel(rawValue: 2)
+            }
+            else {
+                return PriorityLabel(rawValue: self.priorityLabel!)!
+            }
         }
         
         set {
-            self.priorityLabel = newValue.rawValue
+            self.priorityLabel = newValue?.rawValue
         }
     }
 }

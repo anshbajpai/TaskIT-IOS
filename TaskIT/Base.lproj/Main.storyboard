@@ -567,6 +567,10 @@
                     <navigationItem key="navigationItem" title="ChecklistCreate" id="fmQ-KF-Os9">
                         <barButtonItem key="leftBarButtonItem" title="Reminder" image="alarm" catalog="system" id="NJN-xH-T4Y">
                             <color key="tintColor" red="0.20784313730000001" green="0.42352941179999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="reminderBtnClicked:" destination="bBz-4G-Oo6" id="tdx-ih-USd"/>
+                                <segue destination="Isl-a6-f9N" kind="modal" id="ros-5M-GO2"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Done" id="ehy-fF-L86">
@@ -577,6 +581,9 @@
                             </barButtonItem>
                             <barButtonItem title="Priority" image="info.circle" catalog="system" id="QLS-hu-ZWW">
                                 <color key="tintColor" red="0.20784313730000001" green="0.42352941179999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="labelBtnClicked:" destination="bBz-4G-Oo6" id="5vY-nJ-gGl"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -643,8 +650,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="192" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qq-ON-Z4G">
-                                                    <rect key="frame" x="9" y="20" width="107" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qq-ON-Z4G">
+                                                    <rect key="frame" x="9" y="20" width="107" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -657,8 +664,8 @@
                                                         <constraint firstAttribute="width" constant="20" id="ldJ-c2-tNP"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="we8-MI-GJ3">
-                                                    <rect key="frame" x="13" y="53" width="163" height="101"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="we8-MI-GJ3">
+                                                    <rect key="frame" x="9" y="52" width="167" height="143.5"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -671,9 +678,8 @@
                                                 <constraint firstItem="0GC-qJ-asQ" firstAttribute="top" secondItem="bjk-Nt-JFv" secondAttribute="top" constant="8" id="7iV-yg-MdS"/>
                                                 <constraint firstItem="4Qq-ON-Z4G" firstAttribute="top" secondItem="bjk-Nt-JFv" secondAttribute="topMargin" constant="12" id="99U-Sa-MaS"/>
                                                 <constraint firstItem="0GC-qJ-asQ" firstAttribute="leading" secondItem="4Qq-ON-Z4G" secondAttribute="trailing" constant="48" id="A0R-Mt-lot"/>
-                                                <constraint firstAttribute="bottom" secondItem="we8-MI-GJ3" secondAttribute="bottom" constant="30" id="RmH-Tx-i7E"/>
+                                                <constraint firstItem="we8-MI-GJ3" firstAttribute="leading" secondItem="bjk-Nt-JFv" secondAttribute="leading" constant="9" id="Ets-V0-iOV"/>
                                                 <constraint firstItem="we8-MI-GJ3" firstAttribute="top" secondItem="4Qq-ON-Z4G" secondAttribute="bottom" constant="3" id="hDY-51-HWN"/>
-                                                <constraint firstItem="we8-MI-GJ3" firstAttribute="leading" secondItem="bjk-Nt-JFv" secondAttribute="leading" constant="13" id="mLn-jZ-IYG"/>
                                                 <constraint firstAttribute="trailing" secondItem="0GC-qJ-asQ" secondAttribute="trailing" constant="8" id="q6q-is-vPE"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -869,6 +875,9 @@
                             </barButtonItem>
                             <barButtonItem title="Priority" image="info.circle" catalog="system" id="xhO-ur-2vD">
                                 <color key="tintColor" red="0.20784313730000001" green="0.42352941179999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="labelBtnClicked:" destination="3Xe-7D-BuZ" id="cpA-nf-pSC"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -925,6 +934,7 @@
                             <constraint firstItem="ZFB-GY-omv" firstAttribute="trailing" secondItem="6N3-h1-gyj" secondAttribute="trailing" constant="10" id="zVZ-SW-OAj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="r7N-5f-tlU"/>
                     <connections>
                         <outlet property="myDatePicker" destination="caG-NP-3QG" id="Ndv-y7-qG5"/>
                     </connections>
@@ -1057,8 +1067,8 @@
                             <constraint firstItem="9Kq-3w-vaE" firstAttribute="top" secondItem="htd-2m-a6e" secondAttribute="bottom" constant="18" id="3gX-oS-aFw"/>
                             <constraint firstItem="htd-2m-a6e" firstAttribute="leading" secondItem="NgP-cP-YZE" secondAttribute="leading" constant="20" id="Cuy-Jn-biz"/>
                             <constraint firstItem="9Kq-3w-vaE" firstAttribute="trailing" secondItem="NgP-cP-YZE" secondAttribute="trailing" id="F5z-cT-06N"/>
+                            <constraint firstItem="NgP-cP-YZE" firstAttribute="bottom" secondItem="9Kq-3w-vaE" secondAttribute="bottom" constant="456" id="WkY-kG-DPE"/>
                             <constraint firstItem="NgP-cP-YZE" firstAttribute="trailing" secondItem="htd-2m-a6e" secondAttribute="trailing" constant="20" id="cf7-8Z-rep"/>
-                            <constraint firstItem="NgP-cP-YZE" firstAttribute="bottom" secondItem="9Kq-3w-vaE" secondAttribute="bottom" constant="456" id="n2g-go-hxY"/>
                             <constraint firstItem="9Kq-3w-vaE" firstAttribute="leading" secondItem="NgP-cP-YZE" secondAttribute="leading" id="xwN-kp-vV2"/>
                             <constraint firstItem="htd-2m-a6e" firstAttribute="top" secondItem="NgP-cP-YZE" secondAttribute="top" constant="20" id="y3j-tQ-Of5"/>
                         </constraints>
@@ -1117,7 +1127,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cGY-mk-JEQ"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Zg-R9-UBP">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -1152,6 +1162,9 @@
             <point key="canvasLocation" x="4776.811594202899" y="906.69642857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ros-5M-GO2"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Facebook" width="18" height="26"/>
         <image name="Google" width="23" height="23"/>

@@ -49,6 +49,8 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
         databaseController = appDelegate?.databaseController
         
 
+        hideKeyboardWhenTappedAround()
+
         searchBar.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -135,10 +137,21 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
                             
                             allChecklistItems.insert(newChecklistItem)
                         }
-                        let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: "None", isChecklist: task.isChecklist!, checklistItems: allChecklistItems as NSSet, priorityLabel: .low)
+                        
+                        if task.taskPriorityLabel == nil {
+                            let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: "None", isChecklist: task.isChecklist!, checklistItems: allChecklistItems as NSSet, priorityLabel: .low)
+                        }
+                        else {
+                            let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: "None", isChecklist: task.isChecklist!, checklistItems: allChecklistItems as NSSet, priorityLabel: task.taskPriorityLabel!)
+                        }
                     }
                     else {
-                        let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: task.taskDescription!, isChecklist: task.isChecklist!, checklistItems: NSSet(), priorityLabel: .low)
+                        if task.taskPriorityLabel == nil {
+                            let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: task.taskDescription!, isChecklist: task.isChecklist!, checklistItems: NSSet(), priorityLabel: .low)
+                        }
+                        else {
+                            let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: task.taskDescription!, isChecklist: task.isChecklist!, checklistItems: NSSet(), priorityLabel: task.taskPriorityLabel!)
+                        }
                     }
                 }
                     
@@ -156,7 +169,9 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
         print("Triggered")
         allTasks = allTaskNote
         if allTasks.count == 0 {
-            syncWithFirebase()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                self.syncWithFirebase()
+            }
         }
         collectionView.reloadData()
     }
@@ -234,6 +249,17 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 struct TaskTest {
     

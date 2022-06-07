@@ -29,6 +29,9 @@ class TaskCollectionViewCell: UICollectionViewCell {
             priorityLabel.backgroundColor = .green
         }
         
+        taskDescriptionField.frame = CGRect(x: 20,y: 20,width: 200,height: 800)
+        taskDescriptionField.sizeToFit()
+        
         priorityLabel.layer.cornerRadius = priorityLabel.layer.bounds.width / 2
         priorityLabel.clipsToBounds = true
         
