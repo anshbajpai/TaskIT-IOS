@@ -239,7 +239,7 @@ extension HomeViewController: UICollectionViewDataSource {
         if thisTask.isChecklist {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChecklistTaskCollectionViewCell", for: indexPath) as! ChecklistTaskCollectionViewCell
             
-            cell.populate(taskTitle: thisTask.taskTitle!, checklistItems: thisTask.checklistItems as! Set<ChecklistUnit>)
+            cell.populate(taskTitle: thisTask.taskTitle!, checklistItems: thisTask.checklistItems as! Set<ChecklistUnit>, priorityLabelColor: thisTask.priorityLabel)
             
             cell.layer.cornerRadius = 10
             cell.layer.borderWidth = 0.6

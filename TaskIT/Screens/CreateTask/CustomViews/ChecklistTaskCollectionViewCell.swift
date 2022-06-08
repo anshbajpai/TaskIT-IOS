@@ -22,9 +22,17 @@ class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,
     @IBOutlet weak var tableView: UITableView!
     var allChecklistItems: Array<ChecklistUnit> = []
     
-    func populate(taskTitle: String, checklistItems: Set<ChecklistUnit>){
+    func populate(taskTitle: String, checklistItems: Set<ChecklistUnit>, priorityLabelColor: Int32){
         taskTitleField.text = taskTitle
-        
+        if priorityLabelColor == 0 {
+            priorityLabel.backgroundColor = UIColor(red: 220.0/255.0, green: 48.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+        }
+        else if priorityLabelColor == 1 {
+            priorityLabel.backgroundColor = UIColor(red: 255.0/255.0, green: 182.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        }
+        else {
+            priorityLabel.backgroundColor = UIColor(red: 38.0/255.0, green: 166.0/255.0, blue: 91.0/255.0, alpha: 1.0)
+        }
         priorityLabel.layer.cornerRadius = priorityLabel.layer.bounds.width / 2
         priorityLabel.clipsToBounds = true
         

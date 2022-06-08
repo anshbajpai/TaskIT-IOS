@@ -34,7 +34,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
             let alert = UIAlertController(title: "Are you sure ?", message: "Do you want to shift to checklist mode ?", preferredStyle: .alert)
 
             let action1 = UIAlertAction(title: "Yes", style: .default) { (action:UIAlertAction) in
-                tabBarController.selectedIndex = 3
+                tabBarController.selectedIndex = 2
             }
 
             let action2 = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
