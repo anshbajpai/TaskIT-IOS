@@ -1037,7 +1037,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Kq-3w-vaE">
-                                <rect key="frame" x="0.0" y="77" width="414" height="275"/>
+                                <rect key="frame" x="0.0" y="77" width="414" height="289"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4Tg-er-Yv7">
                                         <rect key="frame" x="20" y="49.5" width="374" height="43.5"/>
@@ -1060,21 +1060,41 @@
                                     <outlet property="dataSource" destination="sO9-wM-pgU" id="Xp2-K9-99D"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quotes" translatesAutoresizingMaskIntoConstraints="NO" id="ZBQ-LV-das">
+                                <rect key="frame" x="160" y="420" width="94" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="Iz9-X4-ft9"/>
+                                    <constraint firstAttribute="height" constant="83" id="a2A-33-R9W"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An eye for an eye, makes the whole world blind." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20T-Ol-gUU">
+                                <rect key="frame" x="35" y="511" width="344" height="48"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NgP-cP-YZE"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="9Kq-3w-vaE" firstAttribute="top" secondItem="htd-2m-a6e" secondAttribute="bottom" constant="18" id="3gX-oS-aFw"/>
+                            <constraint firstItem="20T-Ol-gUU" firstAttribute="top" secondItem="ZBQ-LV-das" secondAttribute="bottom" constant="8" id="8bK-bZ-3Ll"/>
+                            <constraint firstItem="ZBQ-LV-das" firstAttribute="top" secondItem="9Kq-3w-vaE" secondAttribute="bottom" constant="54" id="BsV-s1-Fgk"/>
                             <constraint firstItem="htd-2m-a6e" firstAttribute="leading" secondItem="NgP-cP-YZE" secondAttribute="leading" constant="20" id="Cuy-Jn-biz"/>
                             <constraint firstItem="9Kq-3w-vaE" firstAttribute="trailing" secondItem="NgP-cP-YZE" secondAttribute="trailing" id="F5z-cT-06N"/>
-                            <constraint firstItem="NgP-cP-YZE" firstAttribute="bottom" secondItem="9Kq-3w-vaE" secondAttribute="bottom" constant="456" id="WkY-kG-DPE"/>
+                            <constraint firstItem="20T-Ol-gUU" firstAttribute="leading" secondItem="NgP-cP-YZE" secondAttribute="leading" constant="35" id="Olq-Kb-bUv"/>
+                            <constraint firstItem="NgP-cP-YZE" firstAttribute="trailing" secondItem="ZBQ-LV-das" secondAttribute="trailing" constant="160" id="ViX-KN-xGa"/>
                             <constraint firstItem="NgP-cP-YZE" firstAttribute="trailing" secondItem="htd-2m-a6e" secondAttribute="trailing" constant="20" id="cf7-8Z-rep"/>
+                            <constraint firstItem="ZBQ-LV-das" firstAttribute="leading" secondItem="NgP-cP-YZE" secondAttribute="leading" constant="160" id="rUD-mf-rIe"/>
+                            <constraint firstItem="NgP-cP-YZE" firstAttribute="trailing" secondItem="20T-Ol-gUU" secondAttribute="trailing" constant="35" id="rkN-6c-5VT"/>
+                            <constraint firstItem="NgP-cP-YZE" firstAttribute="bottom" secondItem="20T-Ol-gUU" secondAttribute="bottom" constant="249" id="tm9-aN-tno"/>
                             <constraint firstItem="9Kq-3w-vaE" firstAttribute="leading" secondItem="NgP-cP-YZE" secondAttribute="leading" id="xwN-kp-vV2"/>
                             <constraint firstItem="htd-2m-a6e" firstAttribute="top" secondItem="NgP-cP-YZE" secondAttribute="top" constant="20" id="y3j-tQ-Of5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="X3d-Kf-I7G"/>
                     <connections>
+                        <outlet property="quoteLabel" destination="20T-Ol-gUU" id="gIJ-gq-03p"/>
                         <outlet property="tableView" destination="9Kq-3w-vaE" id="BXN-9f-sPv"/>
                     </connections>
                 </viewController>
@@ -1168,6 +1188,7 @@
     <resources>
         <image name="Facebook" width="18" height="26"/>
         <image name="Google" width="23" height="23"/>
+        <image name="Quotes" width="128" height="128"/>
         <image name="TaskIT-Logo" width="100" height="100"/>
         <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="camera" catalog="system" width="128" height="94"/>

@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 
     weak var databaseController: DatabaseProtocol?
     
+    @IBOutlet weak var quoteLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +42,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
          view.safeAreaLayoutGuide.centerYAnchor)
         ])
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getQuoteFromApi()
     }
     
     
@@ -66,15 +71,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
             
             DispatchQueue.main.async {
                 self.indicator.stopAnimating()
-                let alert = UIAlertController(title: "TaskIT-Quote", message: quoteData.content , preferredStyle: .alert)
+//                let alert = UIAlertController(title: "TaskIT-Quote", message: quoteData.content , preferredStyle: .alert)
+//
+//                let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
+//                }
+//
+//
+//                alert.addAction(action1)
+                
+                self.quoteLabel.text = quoteData.content
 
-                let action1 = UIAlertAction(title: "Ok", style: .default) { (action:UIAlertAction) in
-                }
-
-
-                alert.addAction(action1)
-
-                self.present(alert, animated: true, completion: nil)
+                //self.present(alert, animated: true, completion: nil)
             }
                 
             }
