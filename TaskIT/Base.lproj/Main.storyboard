@@ -502,14 +502,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checkboxCell" id="HwX-ng-TkY" customClass="ChecklistTableViewCell" customModule="TaskIT" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HwX-ng-TkY" id="EKo-5z-Bfd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="36.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JA-2Y-Jzg" customClass="Checkbox" customModule="TaskIT" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="8" width="20" height="20.5"/>
+                                                    <rect key="frame" x="20" y="8" width="20" height="9"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="iSN-n9-sqS"/>
@@ -519,7 +519,7 @@
                                                     </connections>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib2-p3-ARq">
-                                                    <rect key="frame" x="55" y="2" width="344" height="32.5"/>
+                                                    <rect key="frame" x="55" y="2" width="344" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -726,6 +726,7 @@
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <connections>
+                                                                            <action selector="isChecked:" destination="nRP-CZ-tna" eventType="valueChanged" id="a8h-FH-Au2"/>
                                                                             <action selector="isChecked:" destination="ZwK-zS-kBm" eventType="valueChanged" id="nBo-Fd-QmV"/>
                                                                         </connections>
                                                                     </view>

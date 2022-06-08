@@ -29,6 +29,7 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
     weak var checklistsRef: CollectionReference?
     weak var currentUser: FirebaseAuth.User?
     
+    var myReminderDate: Date?
     
     
     override func viewDidLoad() {
@@ -105,6 +106,30 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         
         let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allFirebaseChecklistItems)
         
+        if self.myReminderDate != nil {
+            let notificationContent = UNMutableNotificationContent()
+            // Create its details
+            notificationContent.title = "TaskIT"
+            notificationContent.subtitle = taskTitleField.text!
+            notificationContent.body = "Checklist Task Due!"
+            notificationContent.sound = .defaultRingtone
+            
+            let timeInterval = UNCalendarNotificationTrigger(
+                dateMatching: Calendar.current.dateComponents(
+                    [.day, .month, .year, .hour, .minute],
+                    from: self.myReminderDate!),
+                repeats: false)
+            
+            //         let timeInterval = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: "sadqoiuhhrhho",
+                                                content: notificationContent, trigger: timeInterval)
+            
+            UNUserNotificationCenter.current().add(request,withCompletionHandler: nil)
+            print("Notification scheduled.")
+            
+        }
+        
         self.tabBarController?.selectedIndex = 0
 //        let _ = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: "None", isChecklist: true, checklistItems: allChecklistItems as NSSet)
         
@@ -162,6 +187,17 @@ class ChecklistTaskViewController: UIViewController, UITextFieldDelegate, UIText
         }
         
         return task
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewControllerB = segue.destination as? ReminderViewController {
+            viewControllerB.callback = { message in
+                //Do what you want in here!
+                print(message)
+                self.myReminderDate = message
+                
+            }
+        }
     }
     
     
