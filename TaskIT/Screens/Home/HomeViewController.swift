@@ -24,17 +24,20 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // variable to store allTasks getting displayed in collection view
     var allTasks: [TaskUnit] = []
     var listenerType: ListenerType = .all
     weak var databaseController: DatabaseProtocol?
     
     var firstSignUp: Bool = false
     
+    // This variable controls, when sync with firebase operation should occur
     var shouldSync: Bool = true
 
     @IBOutlet weak var searchBar: UISearchBar!
     
     
+    // This is a test tasks array, to populate the collection view initially
     let tasks: [TaskTest] = [
         TaskTest(taskTitle: "Title 1 Here"),
         TaskTest(taskTitle: "Title 2 Here", isChecked: true),
@@ -47,10 +50,12 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Initialize App Delegate
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
 
+        // makes sure the keyboard dissapears when user taps outside the keyboard area
         hideKeyboardWhenTappedAround()
 
         searchBar.delegate = self
@@ -91,25 +96,26 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
     
     override func viewWillAppear(_ animated: Bool) {
      super.viewWillAppear(animated)
+     // Adding Listener, so database changes can be observed
      databaseController?.addListener(listener: self)
-        if firstSignUp {
-            syncWithFirebase()
-        }
 }
     
     override func viewWillDisappear(_ animated: Bool) {
      super.viewWillDisappear(animated)
+        // Removing database from listener
      databaseController?.removeListener(listener: self)
     }
 
     
     @IBAction func settingsBtnClicked(_ sender: Any) {
         print("Clicked")
+        // To view the settings page
         performSegue(withIdentifier: "settingsSegue", sender: nil)
     }
     
+    
     private func syncWithFirebase(){
-      
+      // This function is just responsible for fetching the data from firebase and storing it on core data, to maintain the source -> so changes can be observed accordingly
             let firestoreDatabase = Firestore.firestore()
                
             let authController = Auth.auth()
@@ -139,7 +145,7 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
                             
                             allChecklistItems.insert(newChecklistItem)
                         }
-                        
+                        // Checking if a priority label exists or not
                         if task.taskPriorityLabel == nil {
                             let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: "None", isChecklist: task.isChecklist!, checklistItems: allChecklistItems as NSSet, priorityLabel: .low)
                         }
@@ -148,6 +154,7 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
                         }
                     }
                     else {
+                        // Checking if a priority label exists or not
                         if task.taskPriorityLabel == nil {
                             let _ = self.databaseController?.addTask(taskTitle: task.taskTitle!, taskDescription: task.taskDescription!, isChecklist: task.isChecklist!, checklistItems: NSSet(), priorityLabel: .low)
                         }
@@ -169,6 +176,7 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
     
     func onAllTasksChange(change: DatabaseChange, allTaskNote: [TaskUnit]) {
         print("Triggered")
+        // This function gets triggered, when there is a change in database related to TaskUnit, so that collection view can get updated accordingly
         allTasks = allTaskNote
         if allTasks.count == 0 && self.shouldSync{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
@@ -185,6 +193,7 @@ class HomeViewController: UIViewController, DatabaseListener, UISearchBarDelegat
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // To perform and update collection view according to the search results
         print("Inside")
         if !searchText.isEmpty {
             allTasks = (databaseController?.searchAllTasks(searchQuery: searchText))!
@@ -212,17 +221,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if allTasks.count == 0 {
-//            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height))
-//            noDataLabel.text          = "No Tasks"
-//            noDataLabel.textColor     = UIColor.blue
-//            noDataLabel.textAlignment = .center
-//            let imageView : UIImageView = {
-//                let iv = UIImageView()
-//                iv.image = UIImage(named:"archivebox")
-//                iv.contentMode = .scaleAspectFill
-//                return iv
-//            }()
-//            collectionView.backgroundView  = imageView
+            // This is basically used, when there are no tasks and database is empty
             collectionView.setEmptyMessage("No Tasks", UIImage(systemName: "archivebox")!)
 
         }
@@ -234,9 +233,13 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // Getting the particular task according to the current row index
+        
         let thisTask = allTasks[indexPath.row]
         
         if thisTask.isChecklist {
+            // If it is a checklist task, inflating the collection cell which
+            // supports checklist items
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChecklistTaskCollectionViewCell", for: indexPath) as! ChecklistTaskCollectionViewCell
             
             cell.populate(taskTitle: thisTask.taskTitle!, checklistItems: thisTask.checklistItems as! Set<ChecklistUnit>, priorityLabelColor: thisTask.priorityLabel)
@@ -248,6 +251,7 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         }
         else {
+            // Else populating the default cell, to show the task title and description with the appropriate label
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskCollectionViewCell", for: indexPath) as! TaskCollectionViewCell
             
             cell.populate(taskTitle: thisTask.taskTitle!, taskDescription: thisTask.taskDescription!, priorityLabelColor: thisTask.priorityLabel)
@@ -265,6 +269,7 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Fixing size of the cell
         let size = (collectionView.frame.size.width - 10)/2
         return CGSize(width: size, height: size)
     }
@@ -296,6 +301,9 @@ struct TaskTest {
 
 extension UICollectionView {
 
+        // Code Link - https://gist.github.com/furkanvijapura/3e0150787b3c535baabfb58484729624
+        // Had to alter the code, according to my requirements and updated the constraint logic , with how the image content mode works
+        // Making the whole process easier and faster
         func setEmptyMessage(_ message: String,_ img:UIImage) {
             
             let image = UIImageView()
@@ -332,7 +340,4 @@ extension UICollectionView {
             self.backgroundView = mainView
         }
         
-        func restoreBackgroundView() {
-            self.backgroundView = nil
-        }
     }

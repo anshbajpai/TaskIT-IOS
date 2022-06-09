@@ -60,6 +60,7 @@ class SignupViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
             navigationController?.setNavigationBarHidden(true, animated: animated)
+            // Just to transfer user to the correct screen according to the, sign in state, which can be either true or false
             handle = Auth.auth().addStateDidChangeListener{  auth, user in
                 
                 
@@ -72,11 +73,7 @@ class SignupViewController: UIViewController {
                     //newViewController.modalPresentationStyle = .fullScreen
                     
                     (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(newViewController)
-//                    let navViewController = MainNavigationController(rootViewController: newViewController)
-//
-//                    navViewController.modalPresentationStyle = .fullScreen
-//
-//                            self.present(navViewController, animated: true, completion: nil)
+
 
                 } else {
                   // No User is signed in. Show user the login screen
@@ -124,24 +121,14 @@ class SignupViewController: UIViewController {
                 if(emailField.hasText && passwordField.hasText){
                     let authResult = try await authController?.createUser(withEmail: emailField.text!, password: passwordField.text!)
                     
+                    // If signup is successfull, transferring the user to TabBarController screen
                     DispatchQueue.main.async {
                         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                         let newViewController = storyBoard.instantiateViewController(withIdentifier: "MyTabBarContoller") as! MyTabBarController
                         
-                        //newViewController.firstSignUp = true
-                       // newViewController.modalPresentationStyle = .fullScreen
+                        
                         
                         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(newViewController)
-                        
-                        
-                        
-                        //let navViewController = MainNavigationController(rootViewController: newViewController)
-                        
-                        
-                        
-                        //navViewController.modalPresentationStyle = .fullScreen
-
-                                //self.present(navViewController, animated: true, completion: nil)
                     }
                 }
                 else {
@@ -152,6 +139,7 @@ class SignupViewController: UIViewController {
             }
             catch {
                 //self.displayMessage(title: "Error", message: "Login failed! Try Again")
+                // Signup Failed
                 print("User Signup failed")
                 DispatchQueue.main.async {
                     let alertController = UIAlertController(title: "Error", message: "Login failed! Try Again", preferredStyle: .alert)
@@ -176,6 +164,11 @@ class SignupViewController: UIViewController {
           if let error = error {
             // ...
             print("ERROR")
+              DispatchQueue.main.async {
+                  let alertController = UIAlertController(title: "Error", message: "Login failed! Try Again", preferredStyle: .alert)
+                  alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                  self.present(alertController, animated: true, completion: nil)
+              }
             print(error)
             return
           }
@@ -197,6 +190,7 @@ class SignupViewController: UIViewController {
     
     
     @IBAction func loginChgBtnClicked(_ sender: Any) {
+        //Going to loginViewController after change button has been clicked
         performSegue(withIdentifier: "signinSegue", sender: nil)
     }
     
@@ -214,6 +208,7 @@ class SignupViewController: UIViewController {
 
 
 extension UIViewController {
+    // Extension function to display alert message
     func displayMessage(title: String, message: String) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
@@ -232,6 +227,11 @@ extension UIViewController {
           if let error = error {
 
               print("ERROR")
+              DispatchQueue.main.async {
+                  let alertController = UIAlertController(title: "Error", message: "Login failed! Try Again", preferredStyle: .alert)
+                  alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                  self.present(alertController, animated: true, completion: nil)
+              }
               print(error)
             // ...
             return
@@ -286,6 +286,7 @@ extension UIViewController {
                     }
                     
                     print("User signed in")
+                    
                     
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let newViewController = storyBoard.instantiateViewController(withIdentifier: "HomeVC")

@@ -36,6 +36,7 @@ class OnboardingViewController: UIViewController {
         collectionView.dataSource = self
         getStartedButton.isHidden = true
         
+        // This is data, which needs to be shown in oboarding screens
         pages = [
             OnboardingPage(heading: "Write down \n all your Tasks !!",
                            description: "Get notified and sort your tasks \n based on priortity.", pageImage: UIImage(named: "Onboarding1")!),
@@ -49,6 +50,7 @@ class OnboardingViewController: UIViewController {
     }
     
     @IBAction func nextBtnClicked(_ sender: Any) {
+        // Setting up the logic, so appropriate action is performed
         if currentPage != pages.count - 1{
             currentPage += 1
             let indexPath = IndexPath(item: currentPage, section: 0)
@@ -71,6 +73,7 @@ class OnboardingViewController: UIViewController {
     
     
     @IBAction func getStartedBtnClicked(_ sender: Any) {
+        // Changing user view to SignUpViewController
         userDefaults.set(true, forKey: "onBoarding")
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "SignupVC") as! SignupViewController
@@ -85,6 +88,7 @@ class OnboardingViewController: UIViewController {
     }
     
     @IBAction func skipBtnClicked(_ sender: Any) {
+        // Skip button - to jump straight to the last page and get started
         currentPage = pages.count - 1
         let indexPath = IndexPath(item: currentPage, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -120,17 +124,20 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Populating the cell, with content and ui as needed
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell" ,for: indexPath) as! OnboardingCollectionViewCell
         cell.initialize(pages[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Setting up the size of collection view
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // This basically handles the logic to change the indicator at the bottom of onboarding , so that user knows how the overall layout of onboarding is setup
         let width = scrollView.frame.width
         currentPage = Int(scrollView.contentOffset.x / width)
         pageController.currentPage = currentPage

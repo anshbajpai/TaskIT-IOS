@@ -39,6 +39,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
         
         taskTitleField.delegate = self
         taskDescField.delegate = self
+        // Showing today's date at the top of the task screen to the user
         let date = Date()
         let format = date.getFormattedDate(format: "MMM d, yyyy")
         self.navigationController?.navigationBar.topItem?.title = format
@@ -49,7 +50,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func labelBtnClicked(_ sender: Any) {
-        
+        // This will show user the label alert , to choose their needed priority
         let optionMenu = UIAlertController(title: "Choose Priority", message: "Each priority has different functionalities", preferredStyle: .actionSheet)
         
         let highPriority = UIAlertAction(title: "High Priority", style: .default){(action:UIAlertAction) in
@@ -87,6 +88,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func testBtnClicked(_ sender: Any) {
+        // When user clicks the done button, task gets saved in core data and other actions happen accordingly
         print(taskTitleField.text)
         let myTask = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: NSSet(), priorityLabel: self.priorityLabel)
         let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: [])
@@ -94,6 +96,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
         
         // Create a notification content object
         
+        // SettingNotifications
         if self.myReminderDate != nil {
             let notificationContent = UNMutableNotificationContent()
             // Create its details
@@ -110,7 +113,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
             
             //         let timeInterval = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
             
-            let request = UNNotificationRequest(identifier: "sadqoiuhhrhho",
+            let request = UNNotificationRequest(identifier: "FIT3178-TaskIT",
                                                 content: notificationContent, trigger: timeInterval)
             
             UNUserNotificationCenter.current().add(request,withCompletionHandler: nil)
@@ -160,7 +163,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewControllerB = segue.destination as? ReminderViewController {
             viewControllerB.callback = { message in
-                //Do what you want in here!
+
                 print(message)
                 self.myReminderDate = message
                 

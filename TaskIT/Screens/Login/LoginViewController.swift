@@ -16,11 +16,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
+    // This maintains the firebase auth state
     var authController: Auth?
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // This handles the custom color for email and password fields
         let newColor = UIColor.black
         emailField.layer.borderColor = newColor.cgColor
         passwordField.layer.borderColor = newColor.cgColor
@@ -31,6 +32,7 @@ class LoginViewController: UIViewController {
         passwordField.layer.cornerRadius = 4
         passwordField.layer.borderWidth = 0.3
         
+        // Instantiating authController
         authController = Auth.auth()
     }
     
@@ -45,24 +47,24 @@ class LoginViewController: UIViewController {
     @IBAction func signInBtnClicked(_ sender: Any) {
         Task {
             do {
+                
                 let authResult = try await authController?.signIn(withEmail: emailField.text!, password: passwordField.text!)
                 
+                // If sign in is successfull
+                // Going to TabBarController with homeViewController as the main tab
                 DispatchQueue.main.async {
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let newViewController = storyBoard.instantiateViewController(withIdentifier: "MyTabBarContoller")
                     //newViewController.modalPresentationStyle = .fullScreen
                     
                     (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(newViewController)
-                    //let navViewController = MainNavigationController(rootViewController: MyTabBarController())
-                    
-                    //navViewController.modalPresentationStyle = .fullScreen
 
-                            //self.present(navViewController, animated: true, completion: nil)
                 }
                 
                 print("User logged in")
             }
             catch {
+                // User login failed
                 self.displayMessage(title: "Error", message: "Login failed! Try Again")
                 print("User Signup failed")
             }

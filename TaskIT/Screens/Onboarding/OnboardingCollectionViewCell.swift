@@ -9,6 +9,7 @@ import UIKit
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
     
+    // Custom OnBoardingCell, to display an image with proper page title and description
     
     @IBOutlet weak var pageImageView: UIImageView!
     

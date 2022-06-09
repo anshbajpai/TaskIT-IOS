@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     var databaseController: DatabaseProtocol?
     
-    static let CATEGORY_IDENTIFIER = "edu.monash.fit3178.week10.category"
+    static let CATEGORY_IDENTIFIER = "edu.moansh.TaskIT"
     
     var notificationsEnabled = false
 

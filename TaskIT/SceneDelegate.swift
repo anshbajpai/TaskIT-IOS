@@ -18,7 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        
+        // This whole method is responsible for getting value from userDef and updating
+        // user screen accordingly to the SignupViewController
         
         let userDef = UserDefaults.standard
         let value = userDef.bool(forKey: "onBoarding")
@@ -27,9 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var exampleViewController: UIViewController
 
         if value {
-//            exampleViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignupVC") as! SignupViewController
-//
-//            let navViewController = UINavigationController(rootViewController: exampleViewController)
+
             print("Hello")
         }
         else {

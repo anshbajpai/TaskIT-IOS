@@ -163,6 +163,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
             self.logOutFromApp()
         }
+        
+        if indexPath.row == 2 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "aboutSegue", sender: nil)
+        }
     }
     
     
@@ -183,7 +188,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate {
 extension SettingsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -192,8 +197,11 @@ extension SettingsViewController: UITableViewDataSource{
             cell.textLabel!.text = "Log out"
             cell.textLabel?.textColor = .red
         }
-        else {
+        else if indexPath.row == 1 {
             cell.textLabel!.text = "See a Quote"
+        }
+        else {
+            cell.textLabel!.text = "About"
         }
     
 
