@@ -8,7 +8,8 @@
 import UIKit
 
 class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
-
+        
+    // This class is responsible for setting up the main tab controller and all it's properties as needed
 
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        // This method is just responsible for some prechecks before the user is actuallu transferred to some of the tabs available in the tab Controller
         guard let index = viewControllers?.index(of: viewController) else {
             return false
         }

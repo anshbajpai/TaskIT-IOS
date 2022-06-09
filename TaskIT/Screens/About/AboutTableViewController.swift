@@ -20,6 +20,9 @@ class AboutTableViewController: UITableViewController {
         allAboutInfo.append("OnBoarding Logic and Figuring out indicator update - Source (https://www.youtube.com/watch?v=VMiaNFabsZA) ")
         allAboutInfo.append("Firebase - For implementing LogIn and Database Management")
         allAboutInfo.append("FacebookSDK - For giving user the easy abilty to sign in through their Facebook Account")
+        allAboutInfo.append("FIT3178 Unit Notes/Lecture Video content")
+        allAboutInfo.append("All images used are imported from either iconfinder.com / flaticons / SF Symbols under appropriate licenses")
+        allAboutInfo.append("In Works Image - https://www.flaticon.com/free-icon/work-in-progress_5578703?term=under%20construction&page=1&position=1&page=1&position=1&related_id=5578703&origin=search# ")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
