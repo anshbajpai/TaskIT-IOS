@@ -26,14 +26,13 @@ class ReminderViewController: UIViewController {
 
     @IBAction func doneBtnClicked(_ sender: Any) {
         
-        
+        // This method get;s triggered, when user selects done on the reminder view controller
+        // This sets up the date and initates the callback method so that value can be stored by appropriate variable
+        // and notification can be scheduled
         let date = myDatePicker.date
         callback?(date)
         self.dismiss(animated: true, completion: nil)
 
-        
-        
-        
     }
     
     /*

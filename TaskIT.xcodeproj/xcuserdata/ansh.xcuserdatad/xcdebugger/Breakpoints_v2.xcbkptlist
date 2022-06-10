@@ -126,8 +126,8 @@
             filePath = "TaskIT/Screens/CreateTask/CustomViews/ChecklistTaskCollectionViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "TaskIT/Screens/Settings/SettingsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "logOutFromApp()"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "TaskIT/Screens/Settings/SettingsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "logOutFromApp()"
             landmarkType = "7">
          </BreakpointContent>

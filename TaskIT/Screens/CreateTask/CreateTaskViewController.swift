@@ -75,6 +75,8 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
         optionMenu.addAction(lowPriority)
         optionMenu.addAction(cancelAction)
         
+        // Showing the alert
+        
         self.present(optionMenu, animated: true, completion: nil)
         
     }
@@ -89,6 +91,12 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func testBtnClicked(_ sender: Any) {
         // When user clicks the done button, task gets saved in core data and other actions happen accordingly
+        
+        if taskTitleField.text == "Task Title" || taskDescField.text == "Task Description" {
+            displayMessage(title: "Invalid", message: "Title or Description cannot be empty!")
+            return
+        }
+        
         print(taskTitleField.text)
         let myTask = databaseController?.addTask(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: NSSet(), priorityLabel: self.priorityLabel)
         let firebaseTask = addTaskToFirebase(taskTitle: taskTitleField.text!, taskDescription: taskDescField.text!, isChecklist: false, checklistItems: [])
@@ -162,6 +170,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewControllerB = segue.destination as? ReminderViewController {
+            // This callback method get's called when user returns back from reminder view controller and stores the date in a variable to be accessed later
             viewControllerB.callback = { message in
 
                 print(message)
@@ -173,6 +182,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        // This method basically handles unhighliting of the text field, after getting selected
         if textView.textColor == UIColor.systemGray4 {
             textView.text = nil
             textView.textColor = UIColor.black
@@ -184,6 +194,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        // This method get's triggered as soon as user stops typing, and highlighting the text field again if it is empty
         if textView.text.isEmpty {
             if textView.restorationIdentifier == "textDescription" {
                 textView.text = "Task Description"
@@ -211,6 +222,7 @@ class CreateTaskViewController: UIViewController, UITextViewDelegate {
 
 
 extension Date {
+    // Extension method to perform date formate from a string
     func getFormattedDate(format: String) -> String {
         let dateformat = DateFormatter()
         dateformat.dateFormat = format

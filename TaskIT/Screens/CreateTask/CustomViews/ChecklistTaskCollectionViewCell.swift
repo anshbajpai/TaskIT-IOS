@@ -9,6 +9,7 @@ import UIKit
 
 class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableViewDataSource, ChecklistHomeTableViewCellDelegate {
     
+    // This is the custom cell, to basically incoporate Checklist cell layout and embed a table view inside to show the list of all checklist items according to values passed in the parameter
     
     func checkListTableViewCell(_ cell: ChecklistHomeTableViewCell, didChangeCheckedState checked: Bool) {
         //
@@ -23,7 +24,11 @@ class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,
     var allChecklistItems: Array<ChecklistUnit> = []
     
     func populate(taskTitle: String, checklistItems: Set<ChecklistUnit>, priorityLabelColor: Int32){
+        
+        // This method, basically sets up the title of the task incollection cell and adds value to the table view data source from the passed paramters
+        
         taskTitleField.text = taskTitle
+        // Setting up the custom priority label color
         if priorityLabelColor == 0 {
             priorityLabel.backgroundColor = UIColor(red: 220.0/255.0, green: 48.0/255.0, blue: 35.0/255.0, alpha: 1.0)
         }
@@ -40,17 +45,19 @@ class ChecklistTaskCollectionViewCell: UICollectionViewCell,UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return allChecklistItems.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //Configure your cell here
+        //Configure your cell here, according to the passed values stored in the aarray datSource
         let currentTaskChecklist = allChecklistItems[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "checkboxHomeCell", for: indexPath) as! ChecklistHomeTableViewCell
     
         cell.delegate = self
         let task = currentTaskChecklist.checklistDescription
         cell.set(description: task!, checked: currentTaskChecklist.isChecklist)
+        // Adding this line, so the seperator line stretches the whole width of the area provided
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero

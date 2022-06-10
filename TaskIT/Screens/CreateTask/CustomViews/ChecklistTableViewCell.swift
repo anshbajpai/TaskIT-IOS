@@ -22,6 +22,7 @@ class ChecklistTableViewCell: UITableViewCell {
     weak var delegate: CheckListTableViewCellDelegate?
     
     func set(description: String, checked: Bool) {
+        // Sets up the checkbox table view cell, with the check view and corresponding text
         checkboxDescription.text = description
         checkbox.isChecked = checked
         setupChecked()
@@ -38,6 +39,7 @@ class ChecklistTableViewCell: UITableViewCell {
     }
     
     private func setupChecked(){
+        // This method basically sets up, strike through text just to give a fee
         let attributedString = NSMutableAttributedString(string: checkboxDescription.text!)
         
         if checkbox.isChecked {

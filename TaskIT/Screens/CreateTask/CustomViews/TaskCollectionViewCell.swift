@@ -8,6 +8,10 @@
 import UIKit
 
 class TaskCollectionViewCell: UICollectionViewCell {
+    
+    // This is the default custom task view cell, which basically meams that any text based tasks get's populated here
+    
+    
     @IBOutlet weak var taskTitleField: UILabel!
     
     
@@ -16,9 +20,11 @@ class TaskCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priorityLabel: UIView!
     
     func populate(taskTitle: String, taskDescription: String, priorityLabelColor: Int32){
+        // This method handles populating the custom view cell with task Title, description and priority Label colour
         taskTitleField.text = taskTitle
         taskDescriptionField.text = taskDescription
         
+        // Custom priority label color is set based upon, the case enum values
         if priorityLabelColor == 0 {
             priorityLabel.backgroundColor = UIColor(red: 220.0/255.0, green: 48.0/255.0, blue: 35.0/255.0, alpha: 1.0)
         }
