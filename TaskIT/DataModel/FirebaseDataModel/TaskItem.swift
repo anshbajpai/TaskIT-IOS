@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestoreSwift
 
+// Model TaskUnit Class for uploading data onto firebase
 class TaskItem: NSObject, Codable {
     
     @DocumentID var id: String?

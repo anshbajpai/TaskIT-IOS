@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 
+// This model, basically stores all onboarding page content, to be used in collection view later
 struct OnboardingPage {
     let heading: String
     let description: String

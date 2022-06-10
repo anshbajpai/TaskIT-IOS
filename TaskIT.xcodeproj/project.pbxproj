@@ -77,7 +77,6 @@
 		6AD5654C282B66E700A6F637 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5654B282B66E600A6F637 /* Checkbox.swift */; };
 		6AD5C23C282CE0EE00236AAE /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5C23B282CE0EE00236AAE /* TaskItem.swift */; };
 		6AD5C23E282CE1AC00236AAE /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5C23D282CE1AC00236AAE /* ChecklistItem.swift */; };
-		6AD5C240282CE47100236AAE /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD5C23F282CE47100236AAE /* FirebaseController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,7 +120,6 @@
 		6AD5654B282B66E600A6F637 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		6AD5C23B282CE0EE00236AAE /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		6AD5C23D282CE1AC00236AAE /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
-		6AD5C23F282CE47100236AAE /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +223,7 @@
 		6A5913F528052BDB00FA5276 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6A6F26602853629A00C4C9EB /* Gallery */,
 				6A6F26592852148900C4C9EB /* About */,
 				6A6E06AD284093D100830913 /* ChecklistTask */,
 				6AB4E36F283DFD6C00CBF738 /* Settings */,
@@ -234,7 +233,6 @@
 				6AA8F6FF280D5FA400106983 /* Login */,
 				6AA8F6FC280D3C7700106983 /* Signup */,
 				6A5913F628052BF000FA5276 /* Onboarding */,
-				6A6F265E28521BF400C4C9EB /* GalleryViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -273,6 +271,14 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		6A6F26602853629A00C4C9EB /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				6A6F265E28521BF400C4C9EB /* GalleryViewController.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
 		6A7CB334282906F900F2F573 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +298,6 @@
 				6A7CB34528295F8300F2F573 /* MulticastDelegate.swift */,
 				6A7CB3472829600200F2F573 /* DatabaseProtocol.swift */,
 				6A7CB372282A0D0600F2F573 /* CoreDataController.swift */,
-				6AD5C23F282CE47100236AAE /* FirebaseController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -490,7 +495,6 @@
 				6AA8F6FE280D3CAC00106983 /* SignupViewController.swift in Sources */,
 				6A6F265D285215E900C4C9EB /* AboutTableViewController.swift in Sources */,
 				6A235E1228364B68004A20B6 /* ChecklistUnit+CoreDataProperties.swift in Sources */,
-				6AD5C240282CE47100236AAE /* FirebaseController.swift in Sources */,
 				6A5913E228043C8500FA5276 /* AppDelegate.swift in Sources */,
 				6A7CB3482829600200F2F573 /* DatabaseProtocol.swift in Sources */,
 				6A7CB37D282A206E00F2F573 /* MyTabBarController.swift in Sources */,

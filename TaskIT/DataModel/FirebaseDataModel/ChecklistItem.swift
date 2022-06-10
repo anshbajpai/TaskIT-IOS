@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Model ChecklistUnit Class for uploading data onto firebase
 class ChecklistItem: NSObject, Codable {
     
     var id: String?

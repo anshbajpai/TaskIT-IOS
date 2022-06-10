@@ -69,6 +69,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         taskItem.removeFromChecklistItems(checklistItem)
     }
     
+    // When a user logs out, this function destroys the whole persistent container and re - make it for creating a new batch
     func deleteAllTasks() {
         // Specify a batch to delete with a fetch request
         
@@ -103,6 +104,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
     }
     
+    // Performs search operation in core data according to the predicate provided and returns the filtered result
     func searchAllTasks(searchQuery: String?) -> [TaskUnit] {
         // Code
         var predicate: NSPredicate = NSPredicate()
@@ -126,6 +128,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         return allTasks
     }
     
+    // Delete checklist items from core data contoller
     func deleteAllChecklistItems() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ChecklistUnit")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -138,10 +141,12 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         }
     }
     
+    // Perform deletion of the task from core data
     func deleteTask(taskNote: TaskUnit) {
         persistentContainer.viewContext.delete(taskNote)
     }
     
+    // Fetches all the tasks from the core data
     func fetchAllTasks() -> [TaskUnit] {
 
         if allTasksFetchedResultsController == nil {
@@ -183,6 +188,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         listeners.removeDelegate(listener)
     }
     
+    
+    // Grt' striggered when a change is observed in the controller
     
     func controllerDidChangeContent(_ controller:
       NSFetchedResultsController<NSFetchRequestResult>) {

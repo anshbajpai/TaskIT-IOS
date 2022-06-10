@@ -9,6 +9,7 @@ import UIKit
 
 class AboutTableViewController: UITableViewController {
     
+    // This view controller, is just to show the different sources and libraries used in this application
     
     var allAboutInfo: [String] = []
 
@@ -43,6 +44,7 @@ class AboutTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Populating table view with values from the data source according to the index path
         let cell = tableView.dequeueReusableCell(withIdentifier: "aboutCell", for: indexPath)
 
         let currentInfo = allAboutInfo[indexPath.row]

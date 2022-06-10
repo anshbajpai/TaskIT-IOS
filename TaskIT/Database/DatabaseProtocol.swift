@@ -8,12 +8,14 @@
 import Foundation
 
 
+// Types of database change
 enum DatabaseChange {
  case add
  case remove
  case update
 }
 
+// Type of listener needed for this application
 enum ListenerType {
  case task
  case all
@@ -25,6 +27,7 @@ protocol DatabaseListener: AnyObject {
  func onAllTasksChange(change: DatabaseChange, allTaskNote: [TaskUnit])
 }
 
+// Defines method used in CoreDataController implementation
 protocol DatabaseProtocol: AnyObject {
  func cleanup()
 
